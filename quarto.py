@@ -186,7 +186,7 @@ class QuartoClient(game.GameClient):
         return json.dumps(move)
 
 
-# play againt IA
+# play against IA
 class QuartoUser(game.GameClient):
     """Class representing a client for the Quarto game."""
 
