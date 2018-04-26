@@ -9,7 +9,7 @@ import sys
 import random
 from random import randint
 import json
-
+from easyAI import TwoPlayersGame, AI_Player, Negamax, Human_Player
 from lib import game
 
 
@@ -231,6 +231,39 @@ class QuartoUser(game.GameClient):
         return json.dumps(move)
 
 
+# easy IA
+class simpleClient(TwoPlayersGame, game.GameClient):
+    def __init__(self, players, state):
+        self.players = players
+        self.nplayers = 1
+        visible = state._state['visible']
+        self.__stack = len(visible['remainingPieces'])
+
+    def Possible_move(self, visible):
+        move = {"piece": [], "position": []}
+        for i in range(0, len(visible['remainingPieces'])):
+            move["piece"].append(str(i))
+        for n in range(0, 15):
+            move["position"].append(str(n))
+        return move
+
+    def make_move(self, move, state):
+        try:
+            state.applymove(move)
+        except:
+            del (move['quarto'])
+        return json.dumps(move)
+
+    def win(self, state):
+        return state.winner()
+
+    def show(self, state):
+        return state.prettyprint()
+
+    def scoring(self):
+        return 1 if self.win() else 0
+
+
 if __name__ == '__main__':
 
     # Create the top-level parser
@@ -257,6 +290,13 @@ if __name__ == '__main__':
     user_parser.add_argument('--port', help='port of the server (default: 5000)', default=5000)
     user_parser.add_argument('--verbose', action='store_true')
 
+    # Create the parser for the '2 player games' subcommand
+    user_parser = subparsers.add_parser('ai', help='launch a user')
+    user_parser.add_argument('name', help='name of the player')
+    user_parser.add_argument('--host', help='hostname of the server (default: localhost)', default='127.0.0.1')
+    user_parser.add_argument('--port', help='port of the server (default: 5000)', default=5000)
+    user_parser.add_argument('--verbose', action='store_true')
+
     # Parse the arguments of sys.args
     args = parser.parse_args()
     if args.component == 'server':
@@ -264,6 +304,11 @@ if __name__ == '__main__':
 
     if args.component == 'client':
         QuartoClient(args.name, (args.host, args.port), verbose=args.verbose)
+
+    if args.component == 'ai':
+        ai = Negamax(13)
+        simpleClient([Human_Player(), AI_Player(ai)])
+        history = game.play()
 
     else:
         QuartoUser(args.name, (args.host, args.port), verbose=args.verbose)

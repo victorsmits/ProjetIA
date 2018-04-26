@@ -110,7 +110,7 @@ class NaiveBayes(Classifier):
 
         # Cripple defaultdict to a regular dict, so now it can rasie KeyError
         self.Fi.default_factory = None
-        for d in list(self.Fi.values()):
+        for d in self.Fi.itervalues():
             d.default_factory = None
 
     def classify(self, example):
@@ -173,7 +173,7 @@ class KNearestNeighbors(Classifier):
         for _, example in best:
             counter.add(example)
 
-        items = [(x[1], x[0]) for x in list(counter.items())]
+        items = [(x[1], x[0]) for x in counter.iteritems()]
         items.sort(reverse=True)
         return (items[0][1], items[0][0] / counter.total)
 
@@ -185,10 +185,10 @@ class KNearestNeighbors(Classifier):
         iterator.
         """
 
-        if not filepath or not isinstance(filepath, str):
+        if not filepath or not isinstance(filepath, basestring):
             raise ValueError("Invalid filepath")
 
-        with open(filepath, "wb") as filehandler:
+        with open(filepath, "w") as filehandler:
             pickle.dump(self, filehandler)
 
 
@@ -209,7 +209,7 @@ def iter_tree(root):
     while q:
         value, node, depth = q.pop()
         yield value, node, depth
-        for value, child in list(node.branches.items()):
+        for value, child in node.branches.iteritems():
             q.append((value, child, depth + 1))
 
 
@@ -264,7 +264,7 @@ class DecisionTreeNode(object):
 
     def set_results_from_counts(self, counts):
         self.counts = counts
-        total = sum(counts.values())
+        total = sum(counts.itervalues())
         majority = max(counts, key=counts.get)  # Max frequency
         self.result = (majority, counts[majority] / float(total))
 
@@ -399,13 +399,11 @@ class DecisionTreeLearner_LargeData(DecisionTreeLearner_Queued):
 
             old_leaves = leaves
             leaves = {}
-            for leaf, gains in list(old_leaves.items()):
+            for leaf, gains in old_leaves.iteritems():
                 winner = max(gains, key=lambda gain: gain.get_gain())
                 counts = winner.get_target_class_counts()
-                # WARNING not really sure why this needed to be change
-                # to >= from just >, fixing errors in python 3
                 branches = [(v, c) for v, c in winner.get_branches()
-                            if c.total >= self.minsample]
+                            if c.total > self.minsample]
 
                 # Base case exception
                 if leaf is self.root:

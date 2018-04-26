@@ -46,14 +46,13 @@ def kfold(dataset, problem, method, k=10):
 
     trials = 0
     positive = 0
-    for i in range(k):
+    for i in xrange(k):
         train = [x for j, x in enumerate(dataset) if j % k != i]
         test = [x for j, x in enumerate(dataset) if j % k == i]
         classifier = method(train, problem)
         for data in test:
             trials += 1
-            result = classifier.classify(data)
-            if result is not None and result[0] == problem.target(data):
+            if classifier.classify(data)[0] == problem.target(data):
                 positive += 1
 
     return float(positive) / float(trials)
