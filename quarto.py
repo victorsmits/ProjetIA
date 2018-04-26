@@ -126,6 +126,7 @@ class QuartoState(game.GameState):
                 print(self.displayPiece(state['board'][row * 4 + col]), end="|")
             print('\n')
         print()
+        print("00 01 02 03", '\n04 05 06 07', '\n08 09 10 11', '\n12 13 14 15\n')
         print(", ".join([self.displayPiece(piece) for piece in state['remainingPieces']]))
 
 
@@ -162,8 +163,7 @@ class QuartoClient(game.GameClient):
         remainingPieces = visible['remainingPieces']
         x = randint(0, len(remainingPieces))
 
-        print('\nremainingPieces:', remainingPieces,
-              '\n\npieceToPlay:', visible['pieceToPlay'], '\n')
+        # print('\n remainingPieces:', remainingPieces, '\n\n pieceToPlay:', visible['pieceToPlay'], '\n')
 
         # select the first free position
         if visible['pieceToPlay'] is not None:
@@ -171,7 +171,7 @@ class QuartoClient(game.GameClient):
             move['pos'] = y
 
         # select the first remaining piece
-        move['nextPiece'] = 0
+        move['nextPiece'] = x
 
         # apply the move to check for quarto
         # applymove will raise if we announce a quarto while there is not
@@ -202,14 +202,17 @@ class QuartoUser(game.GameClient):
         move = {}
 
         remainingPieces = visible['remainingPieces']
-        x = randint(0, len(remainingPieces))
+        place = visible['pieceToPlay']
 
-        print('\nremainingPieces:', remainingPieces,
-              '\n\npieceToPlay:', visible['pieceToPlay'], '\n')
+        # print('\n remainingPieces:', remainingPieces, '\n\n pieceToPlay:', visible['pieceToPlay'], '\n')
 
         # select the first free position
-        if visible['pieceToPlay'] is not None:
-            move['pos'] = int(input('Position: '))
+        try:
+            pieceToPlay = state.displayPiece(remainingPieces[place])
+            if visible['pieceToPlay'] is not None:
+                move['pos'] = int(input('Play {} in position: '.format(pieceToPlay)))
+        except:
+            pass
 
         # select the first remaining piece
         move['nextPiece'] = int(input('Next Piece: '))
@@ -217,6 +220,7 @@ class QuartoUser(game.GameClient):
         # apply the move to check for quarto
         # applymove will raise if we announce a quarto while there is not
         move['quarto'] = True
+
         try:
             state.applymove(move)
 
@@ -232,6 +236,7 @@ if __name__ == '__main__':
     # Create the top-level parser
     parser = argparse.ArgumentParser(description='Quarto game')
     subparsers = parser.add_subparsers(description='server client', help='Quarto game components', dest='component')
+
     # Create the parser for the 'server' subcommand
     server_parser = subparsers.add_parser('server', help='launch a server')
     server_parser.add_argument('--host', help='hostname (default: localhost)', default='localhost')
@@ -246,7 +251,7 @@ if __name__ == '__main__':
     client_parser.add_argument('--verbose', action='store_true')
 
     # Create the parser for the 'user' subcommand
-    user_parser = subparsers.add_parser('user', help='launch a client')
+    user_parser = subparsers.add_parser('user', help='launch a user')
     user_parser.add_argument('name', help='name of the player')
     user_parser.add_argument('--host', help='hostname of the server (default: localhost)', default='127.0.0.1')
     user_parser.add_argument('--port', help='port of the server (default: 5000)', default=5000)
