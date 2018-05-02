@@ -157,33 +157,12 @@ class QuartoClient(game.GameClient):
         pass
 
     def _nextmove(self, state):
-        visible = state._state['visible']
-        move = {}
-
-        remainingPieces = visible['remainingPieces']
-        x = randint(0, len(remainingPieces))
-
-        # print('\n remainingPieces:', remainingPieces, '\n\n pieceToPlay:', visible['pieceToPlay'], '\n')
-
-        # select the first free position
-        if visible['pieceToPlay'] is not None:
-            y = randint(0, 15)
-            move['pos'] = y
-
-        # select the first remaining piece
-        move['nextPiece'] = x
-
-        # apply the move to check for quarto
-        # applymove will raise if we announce a quarto while there is not
-        move['quarto'] = True
-        try:
-            state.applymove(move)
-
-        except:
-            del (move['quarto'])
-
-        # send the move
-        return json.dumps(move)
+        ai = Negamax(13)
+        ai2 = Negamax(10)
+        game = simpleClient([AI_Player(ai), AI_Player(ai2)], state)
+        moves = game.get_move()
+        print(moves)
+        return json.dumps(moves)
 
 
 # play against IA
@@ -232,33 +211,37 @@ class QuartoUser(game.GameClient):
 
 
 # easy IA
-class simpleClient(TwoPlayersGame, game.GameClient):
-    def __init__(self, players, state):
+class simpleClient(TwoPlayersGame):
+    def __init__(self, players, quartostate):
+        self.quartostate = quartostate
         self.players = players
-        self.nplayers = 1
-        visible = state._state['visible']
-        self.__stack = len(visible['remainingPieces'])
+        self.nplayer = 1
 
-    def Possible_move(self, visible):
-        move = {"piece": [], "position": []}
+    def possible_moves(self):
+        visible = self.quartostate._state['visible']
+
+        liste = []
+        move = {}
         for i in range(0, len(visible['remainingPieces'])):
-            move["piece"].append(str(i))
-        for n in range(0, 15):
-            move["position"].append(str(n))
-        return move
+            move["nextPiece"] = i
+            for n in range(0, 15):
+                move["pos"] = n
+                move['quarto'] = True
+                liste.append(move)
+        return str(liste)
 
-    def make_move(self, move, state):
-        try:
-            state.applymove(move)
-        except:
-            del (move['quarto'])
-        return json.dumps(move)
+    def make_move(self, move):
 
-    def win(self, state):
-        return state.winner()
+        self.quartostate.applymove(move)
 
-    def show(self, state):
-        return state.prettyprint()
+    def win(self):
+        return self.quartostate.winner
+
+    def is_over(self):
+        return self.win()
+
+    def show(self):
+        return self.quartostate.prettyprint
 
     def scoring(self):
         return 1 if self.win() else 0
@@ -307,8 +290,11 @@ if __name__ == '__main__':
 
     if args.component == 'ai':
         ai = Negamax(13)
-        simpleClient([Human_Player(), AI_Player(ai)])
-        history = game.play()
+        ai2 = Negamax(10)
+        state = QuartoState
+        game = simpleClient([Human_Player(), AI_Player(ai2)], state)
+        print(1)
+        game.play()
 
     else:
         QuartoUser(args.name, (args.host, args.port), verbose=args.verbose)
