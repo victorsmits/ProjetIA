@@ -127,8 +127,8 @@ if __name__ == "__main__":
     dict_tt = DictTT(32, JSWHashTT())
     ai_algo_dual = DUAL(4, tt=TT(dict_tt))
     Chopsticks( [AI_Player(ai_algo_neg),AI_Player(ai_algo_dual)]).play()  #first player never wins
-    
-    print '-'*10
-    print 'Statistics of custom dictionary:'
-    print 'Calls of hash: ', dict_tt.num_calls
-    print 'Collisions: ', dict_tt.num_collisions
+
+    print('-' * 10)
+    print('Statistics of custom dictionary:')
+    print('Calls of hash: ', dict_tt.num_calls)
+    print('Collisions: ', dict_tt.num_collisions)

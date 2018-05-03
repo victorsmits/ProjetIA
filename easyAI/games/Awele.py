@@ -98,7 +98,7 @@ if __name__ == "__main__":
     # this shows that the scoring can be defined in the AI algo, 
     # which enables 2 AIs with different scorings to play a match.
     scoring = lambda game: game.player.score - game.opponent.score
-    ai = Negamax(6, scoring)
+    ai = Negamax(20, scoring)
     game = Awele([AI_Player(ai), AI_Player(ai)])
 
     game.play()

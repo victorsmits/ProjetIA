@@ -9,7 +9,7 @@ import sys
 import random
 from random import randint
 import json
-from easyAI import TwoPlayersGame, AI_Player, Negamax, Human_Player
+from easyAI import TwoPlayersGame, AI_Player, Negamax, Human_Player, SSS
 from lib import game
 
 
@@ -157,12 +157,13 @@ class QuartoClient(game.GameClient):
         pass
 
     def _nextmove(self, state):
-        ai = Negamax(13)
-        ai2 = Negamax(10)
-        game = simpleClient([AI_Player(ai), AI_Player(ai2)], state)
-        moves = game.get_move()
-        print(moves)
-        return json.dumps(moves)
+        # ai = Negamax(5)
+        # ai2 = SSS(5)
+        quarto = simpleClient([AI_Player(Negamax(5)), AI_Player(SSS(5))], state)
+        print(1)
+        ai_moves = quarto.get_move()
+        print(ai_moves)
+        return json.dumps(ai_moves)
 
 
 # play against IA
@@ -216,32 +217,37 @@ class simpleClient(TwoPlayersGame):
         self.quartostate = quartostate
         self.players = players
         self.nplayer = 1
+        # print('SimpleClient created: {}'.format(self.quartostate._state['visible']))
 
     def possible_moves(self):
         visible = self.quartostate._state['visible']
-
         liste = []
         move = {}
+        print(visible['board'])
         for i in range(0, len(visible['remainingPieces'])):
             move["nextPiece"] = i
-            for n in range(0, 15):
+            for n in range(0, 16):
                 move["pos"] = n
                 move['quarto'] = True
                 liste.append(move)
-        return str(liste)
+                try:
+                    print(move)
+                    state.applymove(move)
+                except:
+                    del (move['quarto'])
+        return liste
 
     def make_move(self, move):
-
         self.quartostate.applymove(move)
 
     def win(self):
-        return self.quartostate.winner
+        return self.quartostate.winner()
 
     def is_over(self):
-        return self.win()
+        return self.win() != -1
 
     def show(self):
-        return self.quartostate.prettyprint
+        self.quartostate.prettyprint()
 
     def scoring(self):
         return 1 if self.win() else 0
@@ -295,6 +301,7 @@ if __name__ == '__main__':
         game = simpleClient([Human_Player(), AI_Player(ai2)], state)
         print(1)
         game.play()
+        
 
     else:
         QuartoUser(args.name, (args.host, args.port), verbose=args.verbose)

@@ -52,8 +52,7 @@ if __name__ == "__main__":
     from easyAI.AI import TT
     # we first solve the game
     w, d, m, tt = id_solve(Nim, range(5, 20), win_score = 80)
-    print
-    w, d, len(tt.d)
+    print (w, d, len(tt.d))
     # the previous line prints -1, 16 which shows that if the
     # computer plays second with an AI depth of 16 (or 15) it will
     # always win in 16 (total) moves or less.

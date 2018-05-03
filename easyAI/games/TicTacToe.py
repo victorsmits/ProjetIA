@@ -45,6 +45,6 @@ class TicTacToe( TwoPlayersGame ):
 
 if __name__ == "__main__":
     
-    from easyAI import AI_Player, Negamax
-    ai_algo = Negamax(6)
-    TicTacToe( [Human_Player(),AI_Player(ai_algo)]).play()
+    from easyAI import AI_Player, Negamax, SSS
+    ai_algo = Negamax(10)
+    TicTacToe( [AI_Player(SSS(20)),AI_Player(ai_algo)]).play()
