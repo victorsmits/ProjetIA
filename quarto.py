@@ -11,12 +11,14 @@ from random import randint
 import json
 from easyAI import TwoPlayersGame, AI_Player, Negamax, Human_Player, SSS
 from lib import game
+import copy
+
 
 
 class QuartoState(game.GameState):
-    """Class representing a state for the Quarto game."""
+    '''Class representing a state for the Quarto game.'''
 
-    def __init__(self, initialstate=None):
+    def __init__(self, initialstate=None, currentPlayer=None):
         self.__player = 0
         random.seed()
         if initialstate is None:
@@ -38,46 +40,51 @@ class QuartoState(game.GameState):
                 'quartoAnnounced': False
             }
 
-        super().__init__(initialstate)
+        if currentPlayer is None:
+            currentPlayer = random.randrange(2)
 
-    def setPlayer(self, player):
-        self.__player = player
+        super().__init__(initialstate, currentPlayer=currentPlayer)
 
     def applymove(self, move):
         # {pos: 8, quarto: true, nextPiece: 2}
-        state = self._state['visible']
-
-        if state['pieceToPlay'] is not None:
-            try:
-                if state['board'][move['pos']] is not None:
-                    raise game.InvalidMoveException('The position is not free')
-                state['board'][move['pos']] = state['remainingPieces'][state['pieceToPlay']]
-                del (state['remainingPieces'][state['pieceToPlay']])
-            except game.InvalidMoveException as e:
-                raise e
-            except:
-                raise game.InvalidMoveException("Your move should contain a \"pos\" key in range(16)")
-
+        stateBackup = copy.deepcopy(self._state)
         try:
-            state['pieceToPlay'] = move['nextPiece']
-        except:
-            raise game.InvalidMoveException("You must specify the next piece to play")
+            state = self._state['visible']
+            if state['pieceToPlay'] is not None:
+                try:
+                    if state['board'][move['pos']] is not None:
+                        raise game.InvalidMoveException('The position is not free')
+                    state['board'][move['pos']] = state['remainingPieces'][state['pieceToPlay']]
+                    del (state['remainingPieces'][state['pieceToPlay']])
+                except game.InvalidMoveException as e:
+                    raise e
+                except:
+                    raise game.InvalidMoveException("Your move should contain a \"pos\" key in range(16)")
 
-        if 'quarto' in move:
-            state['quartoAnnounced'] = move['quarto']
-            winner = self.winner()
-            if winner is None or winner == -1:
-                raise game.InvalidMoveException("There is no Quarto !")
-        else:
-            state['quartoAnnounced'] = False
+            if len(state['remainingPieces']) > 0:
+                try:
+                    state['pieceToPlay'] = move['nextPiece']
+                except:
+                    raise game.InvalidMoveException("You must specify the next piece to play")
+            else:
+                state['pieceToPlay'] = None
+
+            if 'quarto' in move:
+                state['quartoAnnounced'] = move['quarto']
+                winner = self.winner()
+                if winner is None or winner == -1:
+                    raise game.InvalidMoveException("There is no Quarto !")
+            else:
+                state['quartoAnnounced'] = False
+        except game.InvalidMoveException as e:
+            self._state = stateBackup
+            raise e
 
     def _same(self, feature, elems):
-
         try:
             elems = list(map(lambda piece: piece[feature], elems))
         except:
             return False
-        print('\nSAME:\nelems: {}\nfeature: {}'.format(elems, feature))
         return all(e == elems[0] for e in elems)
 
     def _quarto(self, elems):
@@ -87,7 +94,7 @@ class QuartoState(game.GameState):
     def winner(self):
         state = self._state['visible']
         board = state['board']
-        player = self.__player
+        player = self._state['currentPlayer']
 
         # 00 01 02 03
         # 04 05 06 07
@@ -119,19 +126,27 @@ class QuartoState(game.GameState):
 
     def prettyprint(self):
         state = self._state['visible']
-        print()
+
+        print('Board:')
         for row in range(4):
-            print('                 |', end="")
+            print('|', end="")
             for col in range(4):
                 print(self.displayPiece(state['board'][row * 4 + col]), end="|")
-            print('\n')
-        print()
-        print("00 01 02 03", '\n04 05 06 07', '\n08 09 10 11', '\n12 13 14 15\n')
+            print()
+
+        print('\nRemaining Pieces:')
         print(", ".join([self.displayPiece(piece) for piece in state['remainingPieces']]))
+
+        if state['pieceToPlay'] is not None:
+            print('\nPiece to Play:')
+            print(self.displayPiece(state['remainingPieces'][state['pieceToPlay']]))
+
+    def nextPlayer(self):
+        self._state['currentPlayer'] = (self._state['currentPlayer'] + 1) % 2
 
 
 class QuartoServer(game.GameServer):
-    """Class representing a server for the Quarto game."""
+    '''Class representing a server for the Quarto game.'''
 
     def __init__(self, verbose=False):
         super().__init__('Quarto', 2, QuartoState(), verbose=verbose)
@@ -142,9 +157,156 @@ class QuartoServer(game.GameServer):
         except:
             raise game.InvalidMoveException('A valid move must be a valid JSON string')
         else:
-            self._state.setPlayer(self.currentplayer)
             self._state.applymove(move)
 
+# class QuartoState(game.GameState):
+#     """Class representing a state for the Quarto game."""
+#
+#     def __init__(self, initialstate=None):
+#         self.__player = 0
+#         random.seed()
+#         if initialstate is None:
+#             pieces = []
+#             for shape in ['round', 'square']:
+#                 for color in ['dark', 'light']:
+#                     for height in ['low', 'high']:
+#                         for filling in ['empty', 'full']:
+#                             pieces.append({
+#                                 'shape': shape,
+#                                 'color': color,
+#                                 'height': height,
+#                                 'filling': filling
+#                             })
+#             initialstate = {
+#                 'board': [None] * 16,
+#                 'remainingPieces': pieces,
+#                 'pieceToPlay': None,
+#                 'quartoAnnounced': False
+#             }
+#
+#         super().__init__(initialstate)
+#
+#     def setPlayer(self, player):
+#         self.__player = player
+#
+#     def applymove(self, move):
+#         # {pos: 8, quarto: true, nextPiece: 2}
+#         state = self._state['visible']
+#         if state['pieceToPlay'] is not None:
+#             try:
+#                 if state['board'][move['pos']] is not None:
+#                     raise game.InvalidMoveException('The position is not free')
+#                 # print('pos', move['pos'])
+#                 # print('Remaining:', state['remainingPieces'], '\nlen;', len(state['remainingPieces']))
+#                 # print('PieceToPlay:', state['pieceToPlay'])
+#                 # print('nextPiece', move['nextPiece'])
+#                 # print('move:', move)
+#                 state['board'][move['pos']] = state['remainingPieces'][state['pieceToPlay']]
+#                 del (state['remainingPieces'][state['pieceToPlay']])
+#                 print('A')
+#                 self.prettyprint()
+#             except game.InvalidMoveException as e:
+#                 raise e
+#             except:
+#                 raise game.InvalidMoveException("Your move should contain a \"pos\" key in range(16)")
+#         oldPieceToPlay = state['pieceToPlay']
+#         try:
+#             state['pieceToPlay'] = move['nextPiece']
+#         except:
+#             state['remainingPieces'].insert(oldPieceToPlay, state['board'][move['pos']])
+#             state['board'][move['pos']] = None
+#             print('B')
+#             self.prettyprint()
+#             raise game.InvalidMoveException("You must specify the next piece to play")
+#
+#         if 'quarto' in move:
+#             state['quartoAnnounced'] = move['quarto']
+#             winner = self.winner()
+#             if winner is None or winner == -1:
+#                 state['remainingPieces'].insert(oldPieceToPlay, state['board'][move['pos']])
+#                 state['board'][move['pos']] = None
+#                 state['pieceToPlay'] = oldPieceToPlay
+#                 # print('C')
+#                 # self.prettyprint()
+#                 raise game.InvalidMoveException("There is no Quarto !")
+#         else:
+#             state['quartoAnnounced'] = False
+#
+#
+#     def _same(self, feature, elems):
+#
+#         try:
+#             elems = list(map(lambda piece: piece[feature], elems))
+#         except:
+#             return False
+#         # print('\nSAME:\nelems: {}\nfeature: {}'.format(elems, feature))
+#         return all(e == elems[0] for e in elems)
+#
+#     def _quarto(self, elems):
+#         return self._same('shape', elems) or self._same('color', elems) or self._same('filling', elems) or self._same(
+#             'height', elems)
+#
+#     def winner(self):
+#         state = self._state['visible']
+#         board = state['board']
+#         player = self.__player
+#
+#         # 00 01 02 03
+#         # 04 05 06 07
+#         # 08 09 10 11
+#         # 12 13 14 15
+#
+#         if state['quartoAnnounced']:
+#             # Check horizontal and vertical lines
+#             for i in range(4):
+#                 if self._quarto([board[4 * i + e] for e in range(4)]):
+#                     return player
+#                 if self._quarto([board[4 * e + i] for e in range(4)]):
+#                     return player
+#             # Check diagonals
+#             if self._quarto([board[5 * e] for e in range(4)]):
+#                 return player
+#             if self._quarto([board[3 + 3 * e] for e in range(4)]):
+#                 return player
+#         return None if board.count(None) == 0 else -1
+#
+#     def displayPiece(self, piece):
+#         if piece is None:
+#             return " " * 6
+#         bracket = ('(', ')') if piece['shape'] == "round" else ('[', ']')
+#         filling = 'E' if piece['filling'] == 'empty' else 'F'
+#         color = 'L' if piece['color'] == 'light' else 'D'
+#         format = ' {}{}{}{} ' if piece['height'] == 'low' else '{0}{0}{1}{2}{3}{3}'
+#         return format.format(bracket[0], filling, color, bracket[1])
+#
+#     def prettyprint(self):
+#         state = self._state['visible']
+#         print()
+#         for row in range(4):
+#             print('                 |', end="")
+#             for col in range(4):
+#                 print(self.displayPiece(state['board'][row * 4 + col]), end="|")
+#             print('\n')
+#         print()
+#         print("00 01 02 03", '\n04 05 06 07', '\n08 09 10 11', '\n12 13 14 15\n')
+#         print(", ".join([self.displayPiece(piece) for piece in state['remainingPieces']]))
+#
+#
+# class QuartoServer(game.GameServer):
+#     """Class representing a server for the Quarto game."""
+#
+#     def __init__(self, verbose=False):
+#         super().__init__('Quarto', 2, QuartoState(), verbose=verbose)
+#
+#     def applymove(self, move):
+#         try:
+#             move = json.loads(move)
+#         except:
+#             raise game.InvalidMoveException('A valid move must be a valid JSON string')
+#         else:
+#             self._state.setPlayer(self.currentplayer)
+#             self._state.applymove(move)
+#
 
 class QuartoClient(game.GameClient):
     """Class representing a client for the Quarto game."""
@@ -159,10 +321,10 @@ class QuartoClient(game.GameClient):
     def _nextmove(self, state):
         # ai = Negamax(5)
         # ai2 = SSS(5)
-        quarto = simpleClient([AI_Player(Negamax(5)), AI_Player(SSS(5))], state)
-        print(1)
+
+        quarto = simpleClient([AI_Player(Negamax(10)), AI_Player(SSS(15))], state,1)
         ai_moves = quarto.get_move()
-        print(ai_moves)
+        print("ai move:", ai_moves)
         return json.dumps(ai_moves)
 
 
@@ -213,8 +375,9 @@ class QuartoUser(game.GameClient):
 
 # easy IA
 class simpleClient(TwoPlayersGame):
-    def __init__(self, players, quartostate):
+    def __init__(self, players, quartostate, nplayer):
         self.quartostate = quartostate
+        self.statePlayer = 1
         self.players = players
         self.nplayer = 1
         # print('SimpleClient created: {}'.format(self.quartostate._state['visible']))
@@ -222,23 +385,28 @@ class simpleClient(TwoPlayersGame):
     def possible_moves(self):
         visible = self.quartostate._state['visible']
         liste = []
-        move = {}
-        print(visible['board'])
-        for i in range(0, len(visible['remainingPieces'])):
-            move["nextPiece"] = i
-            for n in range(0, 16):
-                move["pos"] = n
-                move['quarto'] = True
-                liste.append(move)
-                try:
-                    print(move)
-                    state.applymove(move)
-                except:
-                    del (move['quarto'])
+        # print(visible['board'])
+        for i in range(16):
+            if visible['board'][i] is None:
+                for n in range(len(visible['remainingPieces'])-1):
+                    move = {}
+                    move['pos'] = i
+                    move['nextPiece'] = n
+                    move['quarto'] = True
+                    try:
+                        self.quartostate.applymove(move)
+                    except:
+                        del (move['quarto'])
+                    liste.append(move)
+            else:
+                pass
         return liste
 
     def make_move(self, move):
-        self.quartostate.applymove(move)
+        position = move['pos']
+        if self.quartostate._state['visible']['board'][position] is None:
+            self.quartostate.applymove(move)
+        self.statePlayer = (self.statePlayer % 2) + 1
 
     def win(self):
         return self.quartostate.winner()
@@ -248,9 +416,15 @@ class simpleClient(TwoPlayersGame):
 
     def show(self):
         self.quartostate.prettyprint()
+        # print('board:', self.quartostate._state['visible']["board"])
 
     def scoring(self):
-        return 1 if self.win() else 0
+        # print('type:', type(self.win()))
+        try:
+            # print('return:',  1 if (int(self.win()) + 1) == 1 else 0)
+            return 1 if (int(self.win()) + 1) == 1 else 0
+        except:
+            pass
 
 
 if __name__ == '__main__':
@@ -295,11 +469,10 @@ if __name__ == '__main__':
         QuartoClient(args.name, (args.host, args.port), verbose=args.verbose)
 
     if args.component == 'ai':
-        ai = Negamax(13)
-        ai2 = Negamax(10)
-        state = QuartoState
-        game = simpleClient([Human_Player(), AI_Player(ai2)], state)
-        print(1)
+        ai = Negamax(1)
+        ai2 = SSS(2)
+        state = QuartoState()
+        game = simpleClient([Human_Player(), AI_Player(ai2)], state, 1)
         game.play()
         
 
