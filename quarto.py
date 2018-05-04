@@ -9,10 +9,9 @@ import sys
 import random
 from random import randint
 import json
-from easyAI import TwoPlayersGame, AI_Player, Negamax, Human_Player, SSS
+from easyAI import TwoPlayersGame, AI_Player, Negamax, Human_Player, SSS, TT
 from lib import game
 import copy
-
 
 
 class QuartoState(game.GameState):
@@ -53,6 +52,7 @@ class QuartoState(game.GameState):
             if state['pieceToPlay'] is not None:
                 try:
                     if state['board'][move['pos']] is not None:
+                        # print('position:', move['pos'])
                         raise game.InvalidMoveException('The position is not free')
                     state['board'][move['pos']] = state['remainingPieces'][state['pieceToPlay']]
                     del (state['remainingPieces'][state['pieceToPlay']])
@@ -113,7 +113,7 @@ class QuartoState(game.GameState):
                 return player
             if self._quarto([board[3 + 3 * e] for e in range(4)]):
                 return player
-        return None if board.count(None) == 0 else -1
+        return 2 if board.count(None) == 0 else -1
 
     def displayPiece(self, piece):
         if piece is None:
@@ -129,11 +129,11 @@ class QuartoState(game.GameState):
 
         print('Board:')
         for row in range(4):
-            print('|', end="")
+            print('             |', end="")
             for col in range(4):
                 print(self.displayPiece(state['board'][row * 4 + col]), end="|")
             print()
-
+        print("00 01 02 03", '\n04 05 06 07', '\n08 09 10 11', '\n12 13 14 15\n')
         print('\nRemaining Pieces:')
         print(", ".join([self.displayPiece(piece) for piece in state['remainingPieces']]))
 
@@ -158,6 +158,7 @@ class QuartoServer(game.GameServer):
             raise game.InvalidMoveException('A valid move must be a valid JSON string')
         else:
             self._state.applymove(move)
+
 
 # class QuartoState(game.GameState):
 #     """Class representing a state for the Quarto game."""
@@ -321,9 +322,8 @@ class QuartoClient(game.GameClient):
     def _nextmove(self, state):
         # ai = Negamax(5)
         # ai2 = SSS(5)
-
-        quarto = simpleClient([AI_Player(Negamax(10)), AI_Player(SSS(15))], state,1)
-        ai_moves = quarto.get_move()
+        Quarto = simpleClient([AI_Player(SSS(3, win_score=-1)), AI_Player(Negamax(3, win_score=-1))], state)
+        ai_moves = Quarto.get_move()
         print("ai move:", ai_moves)
         return json.dumps(ai_moves)
 
@@ -341,14 +341,12 @@ class QuartoUser(game.GameClient):
 
     def _nextmove(self, state):
         visible = state._state['visible']
+
         move = {}
 
         remainingPieces = visible['remainingPieces']
         place = visible['pieceToPlay']
 
-        # print('\n remainingPieces:', remainingPieces, '\n\n pieceToPlay:', visible['pieceToPlay'], '\n')
-
-        # select the first free position
         try:
             pieceToPlay = state.displayPiece(remainingPieces[place])
             if visible['pieceToPlay'] is not None:
@@ -373,28 +371,66 @@ class QuartoUser(game.GameClient):
         return json.dumps(move)
 
 
+# random AI
+class QuartoRandom(game.GameClient):
+    """Class representing a client for the Quarto game."""
+
+    def __init__(self, name, server, verbose=False):
+        super().__init__(server, QuartoState, verbose=verbose)
+        self.__name = name
+
+    def _handle(self, message):
+        pass
+
+    def _nextmove(self, state):
+        visible = state._state['visible']
+        move = {}
+
+        remainingPieces = visible['remainingPieces']
+        x = randint(0, (len(remainingPieces)-1))
+
+        # select the first free position
+        if visible['pieceToPlay'] is not None:
+            y = randint(0, 15)
+            move['pos'] = y
+
+        # select the first remaining piece
+        move['nextPiece'] = x
+
+        # apply the move to check for quarto
+        # applymove will raise if we announce a quarto while there is not
+        move['quarto'] = True
+        try:
+            state.applymove(move)
+
+        except:
+            del (move['quarto'])
+
+        # send the move
+        return json.dumps(move)
+
+
 # easy IA
 class simpleClient(TwoPlayersGame):
-    def __init__(self, players, quartostate, nplayer):
+    def __init__(self, players, quartostate):
         self.quartostate = quartostate
-        self.statePlayer = 1
         self.players = players
         self.nplayer = 1
-        # print('SimpleClient created: {}'.format(self.quartostate._state['visible']))
+        # print('SimpleClient created: {}'.format(self.quartostate))
 
     def possible_moves(self):
-        visible = self.quartostate._state['visible']
         liste = []
-        # print(visible['board'])
         for i in range(16):
-            if visible['board'][i] is None:
-                for n in range(len(visible['remainingPieces'])-1):
+            if self.quartostate._state['visible']['board'][i] is None:
+                for n in range(len(self.quartostate._state['visible']['remainingPieces']) - 1):
                     move = {}
                     move['pos'] = i
                     move['nextPiece'] = n
                     move['quarto'] = True
                     try:
-                        self.quartostate.applymove(move)
+                        CopyState = copy.deepcopy(self.quartostate)
+                        CopyState.applymove(move)
+
                     except:
                         del (move['quarto'])
                     liste.append(move)
@@ -406,7 +442,6 @@ class simpleClient(TwoPlayersGame):
         position = move['pos']
         if self.quartostate._state['visible']['board'][position] is None:
             self.quartostate.applymove(move)
-        self.statePlayer = (self.statePlayer % 2) + 1
 
     def win(self):
         return self.quartostate.winner()
@@ -419,12 +454,13 @@ class simpleClient(TwoPlayersGame):
         # print('board:', self.quartostate._state['visible']["board"])
 
     def scoring(self):
-        # print('type:', type(self.win()))
-        try:
-            # print('return:',  1 if (int(self.win()) + 1) == 1 else 0)
-            return 1 if (int(self.win()) + 1) == 1 else 0
-        except:
-            pass
+        Score = self.win()
+        if Score is None or Score == -1:
+            return 0
+        if Score == self.quartostate._state['currentPlayer']:
+            return 1
+        else:
+            return -1
 
 
 if __name__ == '__main__':
@@ -460,6 +496,13 @@ if __name__ == '__main__':
     user_parser.add_argument('--port', help='port of the server (default: 5000)', default=5000)
     user_parser.add_argument('--verbose', action='store_true')
 
+    # Create the parser for the '2 player games' subcommand
+    user_parser = subparsers.add_parser('rdm', help='launch a user')
+    user_parser.add_argument('name', help='name of the player')
+    user_parser.add_argument('--host', help='hostname of the server (default: localhost)', default='127.0.0.1')
+    user_parser.add_argument('--port', help='port of the server (default: 5000)', default=5000)
+    user_parser.add_argument('--verbose', action='store_true')
+
     # Parse the arguments of sys.args
     args = parser.parse_args()
     if args.component == 'server':
@@ -468,13 +511,15 @@ if __name__ == '__main__':
     if args.component == 'client':
         QuartoClient(args.name, (args.host, args.port), verbose=args.verbose)
 
+    if args.component == 'rdm':
+        QuartoRandom(args.name, (args.host, args.port), verbose=args.verbose)
+
     if args.component == 'ai':
         ai = Negamax(1)
         ai2 = SSS(2)
         state = QuartoState()
-        game = simpleClient([Human_Player(), AI_Player(ai2)], state, 1)
-        game.play()
-        
+        quarto = simpleClient([AI_Player(SSS(2)), AI_Player(Negamax(2))], state)
+        quarto.play()
 
     else:
         QuartoUser(args.name, (args.host, args.port), verbose=args.verbose)
