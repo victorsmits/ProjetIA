@@ -171,11 +171,8 @@ class QuartoClient(game.GameClient):
         pass
 
     def _nextmove(self, state):
-        # ai = Negamax(5)
-        # ai2 = SSS(5)
-        Quarto = AIClient([AI_Player(SSS(3)), AI_Player(Negamax(3))], state)
+        Quarto = AIClient([AI_Player(Negamax(3)), AI_Player(Negamax(3))], state)
         ai_moves = Quarto.get_move()
-        print("ai move:", ai_moves)
         return json.dumps(ai_moves)
 
 
@@ -267,7 +264,6 @@ class AIClient(TwoPlayersGame):
         self.quartostate = quartostate
         self.players = players
         self.nplayer = 1
-        # print('SimpleClient created: {}'.format(self.quartostate))
 
     def possible_moves(self):
         liste = []
@@ -286,6 +282,7 @@ class AIClient(TwoPlayersGame):
                     liste.append(move)
             else:
                 pass
+        print(len(liste))
         return liste
 
     def make_move(self, move):
@@ -310,7 +307,7 @@ class AIClient(TwoPlayersGame):
         Score = self.win()
         if Score is None or Score == -1:
             return 0
-        if Score == self.nopponent:
+        if Score == self.nopponent - 1:
             return 1
         else:
             return -1
