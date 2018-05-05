@@ -71,12 +71,11 @@ class QuartoState(game.GameState):
             if 'quarto' in move:
                 state['quartoAnnounced'] = move['quarto']
                 winner = self.winner()
-                if winner is None or winner == -1:
+                if winner is 2 or winner == -1:
                     raise game.InvalidMoveException("There is no Quarto !")
             else:
                 state['quartoAnnounced'] = False
         except game.InvalidMoveException as e:
-            # self.prettyprint()
             self._state = stateBackup
             raise e
 
@@ -171,8 +170,9 @@ class QuartoClient(game.GameClient):
         pass
 
     def _nextmove(self, state):
-        Quarto = AIClient([AI_Player(Negamax(3)), AI_Player(Negamax(3))], state)
+        Quarto = AIClient([AI_Player(SSS(3)), AI_Player(SSS(3))], state)
         ai_moves = Quarto.get_move()
+        print(ai_moves)
         return json.dumps(ai_moves)
 
 
@@ -235,7 +235,7 @@ class QuartoRandom(game.GameClient):
         move = {}
 
         remainingPieces = visible['remainingPieces']
-        x = randint(0, (len(remainingPieces)-1))
+        x = randint(0, (len(remainingPieces) - 1))
 
         # select the first free position
         if visible['pieceToPlay'] is not None:
@@ -260,57 +260,61 @@ class QuartoRandom(game.GameClient):
 
 # easy IA
 class AIClient(TwoPlayersGame):
-    def __init__(self, players, quartostate):
-        self.quartostate = quartostate
+    def __init__(self, players, State):
+        self.State = State
         self.players = players
         self.nplayer = 1
 
     def possible_moves(self):
         liste = []
+        visible = self.State._state['visible']
         for i in range(16):
-            if self.quartostate._state['visible']['board'][i] is None:
-                for n in range(len(self.quartostate._state['visible']['remainingPieces']) - 1):
-                    move = {}
-                    move['pos'] = i
-                    move['nextPiece'] = n
-                    move['quarto'] = True
+            for n in range(len(visible['remainingPieces']) - 1):
+                move = {}
+                move['pos'] = i
+                move['nextPiece'] = n
+                move['quarto'] = True
+                if visible['board'][i] is None:
                     try:
-                        CopyState = copy.deepcopy(self.quartostate)
+                        CopyState = copy.deepcopy(self.State)
                         CopyState.applymove(move)
                     except:
                         del (move['quarto'])
                     liste.append(move)
-            else:
-                pass
-        print(len(liste))
+                else:
+                    # print('pos full')
+                    pass
+        # print('len:', len(liste))
         return liste
 
     def make_move(self, move):
         position = move['pos']
-        if self.quartostate._state['visible']['board'][position] is None:
-            self.quartostate.applymove(move)
+        visible = self.State._state['visible']
+        if visible['board'][position] is None:
+            self.State.applymove(move)
 
     def win(self):
-        return self.quartostate.winner()
+        return self.State.winner()
 
     def is_over(self):
-        return False if self.win() == -1 or self.win() == (self.nplayer -1) else True
+        return False if self.win() == -1 or self.win() == (self.nplayer - 1) else True
 
     def show(self):
-        self.quartostate.prettyprint()
-        print('scoring:', self.scoring())
-        print('player:', self.nopponent)
-        # print('board:', self.quartostate._state['visible']["board"])
-
+        self.State.prettyprint()
+        visible = self.State._state['visible']
+        print('board:', self.State._state['visible']['board'])
+        print('empty slot:', visible['board'].count(None))
+        # print('scoring:', self.scoring())
+        # print('player:', self.nopponent)
 
     def scoring(self):
         Score = self.win()
-        if Score is None or Score == -1:
+        if Score is 2 or Score == -1:
             return 0
         if Score == self.nopponent - 1:
-            return 1
+            return -100
         else:
-            return -1
+            return 100
 
 
 if __name__ == '__main__':
@@ -339,13 +343,11 @@ if __name__ == '__main__':
     user_parser.add_argument('--port', help='port of the server (default: 5000)', default=5000)
     user_parser.add_argument('--verbose', action='store_true')
 
-    # Create the parser for the '2 player games' subcommand
+    # Create the parser for the '2 AI games' subcommand
     user_parser = subparsers.add_parser('ai', help='launch a ai client')
-    user_parser.add_argument('--host', help='hostname of the server (default: localhost)', default='127.0.0.1')
-    user_parser.add_argument('--port', help='port of the server (default: 5000)', default=5000)
     user_parser.add_argument('--verbose', action='store_true')
 
-    # Create the parser for the '2 player games' subcommand
+    # Create the parser for the random AI' subcommand
     user_parser = subparsers.add_parser('rdm', help='launch a random ai')
     user_parser.add_argument('name', help='name of the player')
     user_parser.add_argument('--host', help='hostname of the server (default: localhost)', default='127.0.0.1')
