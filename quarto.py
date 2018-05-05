@@ -125,7 +125,7 @@ class QuartoState(game.GameState):
 
     def prettyprint(self):
         state = self._state['visible']
-
+        print('empty space:', self._state['visible']['board'].count(None))
         print('Board:')
         for row in range(4):
             print('             |', end="")
@@ -134,10 +134,12 @@ class QuartoState(game.GameState):
             print()
         print("00 01 02 03", '\n04 05 06 07', '\n08 09 10 11', '\n12 13 14 15\n')
         print('\nRemaining Pieces:')
+        print('len:', len(state['remainingPieces']))
         print(", ".join([self.displayPiece(piece) for piece in state['remainingPieces']]))
 
         if state['pieceToPlay'] is not None:
             print('\nPiece to Play:')
+            print(state['pieceToPlay'])
             print(self.displayPiece(state['remainingPieces'][state['pieceToPlay']]))
 
     def nextPlayer(self):
@@ -235,18 +237,14 @@ class QuartoRandom(game.GameClient):
         move = {}
 
         remainingPieces = visible['remainingPieces']
-        x = randint(0, (len(remainingPieces) - 1))
+        x = randint(0, (len(remainingPieces) - 2))
 
-        # select the first free position
         if visible['pieceToPlay'] is not None:
             y = randint(0, 15)
             move['pos'] = y
 
-        # select the first remaining piece
         move['nextPiece'] = x
 
-        # apply the move to check for quarto
-        # applymove will raise if we announce a quarto while there is not
         move['quarto'] = True
         try:
             state.applymove(move)
@@ -254,7 +252,6 @@ class QuartoRandom(game.GameClient):
         except:
             del (move['quarto'])
 
-        # send the move
         return json.dumps(move)
 
 
@@ -268,23 +265,24 @@ class AIClient(TwoPlayersGame):
     def possible_moves(self):
         liste = []
         visible = self.State._state['visible']
-        for i in range(16):
-            for n in range(len(visible['remainingPieces']) - 1):
-                move = {}
-                move['pos'] = i
-                move['nextPiece'] = n
-                move['quarto'] = True
-                if visible['board'][i] is None:
-                    try:
-                        CopyState = copy.deepcopy(self.State)
-                        CopyState.applymove(move)
-                    except:
-                        del (move['quarto'])
-                    liste.append(move)
-                else:
-                    # print('pos full')
-                    pass
-        # print('len:', len(liste))
+
+        if visible['board'].count(None) == 1:
+            liste.append({'pos': visible['board'].index(None), 'nextPiece': 0})
+
+        else:
+            for i in range(16):
+                for n in range(len(visible['remainingPieces']) - 1):
+                    move = {}
+                    move['pos'] = i
+                    move['nextPiece'] = n
+                    move['quarto'] = True
+                    if visible['board'][i] is None:
+                        try:
+                            CopyState = copy.deepcopy(self.State)
+                            CopyState.applymove(move)
+                        except:
+                            del (move['quarto'])
+                        liste.append(move)
         return liste
 
     def make_move(self, move):
