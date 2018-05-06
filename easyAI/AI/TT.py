@@ -98,7 +98,7 @@ class TT:
                 json.dump(dict(zip(*[k1, v])), f, ensure_ascii=False)
         else:
             with open(filename, 'w') as f:
-                json.dump(self.d, f, ensure_ascii=False)
+                json.dump(self.d, f, ensure_ascii=True, indent=3)
 
     def from_json_file(self, filename, use_tuples=False):
         """ Loads a transposition table previously saved with

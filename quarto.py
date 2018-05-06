@@ -9,9 +9,11 @@ import sys
 import random
 from random import randint
 import json
-from easyAI import TwoPlayersGame, AI_Player, Negamax, Human_Player, SSS, TT
+from easyAI import TwoPlayersGame, AI_Player, Human_Player
+from easyAI.AI import Negamax, SSS, DUAL, TT
 from lib import game
 import copy
+import profile
 
 
 class QuartoState(game.GameState):
@@ -164,7 +166,7 @@ class QuartoServer(game.GameServer):
 class QuartoClient(game.GameClient):
     """Class representing a client for the Quarto game."""
 
-    def __init__(self, name, server, verbose=False):
+    def __init__(self, name, server,  verbose=False):
         super().__init__(server, QuartoState, verbose=verbose)
         self.__name = name
 
@@ -172,9 +174,27 @@ class QuartoClient(game.GameClient):
         pass
 
     def _nextmove(self, state):
-        Quarto = AIClient([AI_Player(SSS(3)), AI_Player(SSS(3))], state)
+        AI = Negamax(4, tt=TT())
+        Quarto = AIClient([AI_Player(AI), AI_Player(AI)], state)
         ai_moves = Quarto.get_move()
-        print(ai_moves)
+        return json.dumps(ai_moves)
+
+
+
+class QuartoClient2(game.GameClient):
+    """Class representing a client for the Quarto game."""
+
+    def __init__(self, name, server,  verbose=False):
+        super().__init__(server, QuartoState, verbose=verbose)
+        self.__name = name
+
+    def _handle(self, message):
+        pass
+
+    def _nextmove(self, state):
+        AI_algo = Negamax(2, tt=TT())
+        Quarto = AIClient([AI_Player(AI_algo), AI_Player(AI_algo)], state)
+        ai_moves = Quarto.get_move()
         return json.dumps(ai_moves)
 
 
@@ -295,13 +315,14 @@ class AIClient(TwoPlayersGame):
         return self.State.winner()
 
     def is_over(self):
-        return False if self.win() == -1 or self.win() == (self.nplayer - 1) else True
+        return False if self.win() == -1 else True
 
     def show(self):
         self.State.prettyprint()
         visible = self.State._state['visible']
-        print('board:', self.State._state['visible']['board'])
+        # print('board:', self.State._state['visible']['board'])
         print('empty slot:', visible['board'].count(None))
+        # print(self.State._state['visible']['move'])
         # print('scoring:', self.scoring())
         # print('player:', self.nopponent)
 
@@ -309,17 +330,20 @@ class AIClient(TwoPlayersGame):
         Score = self.win()
         if Score is 2 or Score == -1:
             return 0
-        if Score == self.nopponent - 1:
+        if Score == self.nopponent:
             return -100
         else:
             return 100
+
+    def ttentry(self):
+        return str(self.State._state['visible']['board'])
 
 
 if __name__ == '__main__':
 
     # Create the top-level parser
     parser = argparse.ArgumentParser(description='Quarto game')
-    subparsers = parser.add_subparsers(description='server client', help='Quarto game components', dest='component')
+    subparsers = parser.add_subparsers(description='server client clientB user AI rdm', help='Quarto game components', dest='component')
 
     # Create the parser for the 'server' subcommand
     server_parser = subparsers.add_parser('server', help='launch a server')
@@ -334,6 +358,13 @@ if __name__ == '__main__':
     client_parser.add_argument('--port', help='port of the server (default: 5000)', default=5000)
     client_parser.add_argument('--verbose', action='store_true')
 
+    # Create the parser for the 'clientB' subcommand
+    client2_parser = subparsers.add_parser('clientB', help='launch a client')
+    client2_parser.add_argument('name', help='name of the player')
+    client2_parser.add_argument('--host', help='hostname of the server (default: localhost)', default='127.0.0.1')
+    client2_parser.add_argument('--port', help='port of the server (default: 5000)', default=5000)
+    client2_parser.add_argument('--verbose', action='store_true')
+
     # Create the parser for the 'user' subcommand
     user_parser = subparsers.add_parser('user', help='launch a user')
     user_parser.add_argument('name', help='name of the player')
@@ -342,15 +373,15 @@ if __name__ == '__main__':
     user_parser.add_argument('--verbose', action='store_true')
 
     # Create the parser for the '2 AI games' subcommand
-    user_parser = subparsers.add_parser('ai', help='launch a ai client')
-    user_parser.add_argument('--verbose', action='store_true')
+    AI_parser = subparsers.add_parser('ai', help='launch a ai client')
+    AI_parser.add_argument('--verbose', action='store_true')
 
-    # Create the parser for the random AI' subcommand
-    user_parser = subparsers.add_parser('rdm', help='launch a random ai')
-    user_parser.add_argument('name', help='name of the player')
-    user_parser.add_argument('--host', help='hostname of the server (default: localhost)', default='127.0.0.1')
-    user_parser.add_argument('--port', help='port of the server (default: 5000)', default=5000)
-    user_parser.add_argument('--verbose', action='store_true')
+    # Create the parser for the 'random AI' subcommand
+    rdm_parser = subparsers.add_parser('rdm', help='launch a random ai')
+    rdm_parser.add_argument('name', help='name of the player')
+    rdm_parser.add_argument('--host', help='hostname of the server (default: localhost)', default='127.0.0.1')
+    rdm_parser.add_argument('--port', help='port of the server (default: 5000)', default=5000)
+    rdm_parser.add_argument('--verbose', action='store_true')
 
     # Parse the arguments of sys.args
     args = parser.parse_args()
@@ -360,13 +391,19 @@ if __name__ == '__main__':
     if args.component == 'client':
         QuartoClient(args.name, (args.host, args.port), verbose=args.verbose)
 
+    if args.component == 'clientB':
+        QuartoClient2(args.name, (args.host, args.port), verbose=args.verbose)
+
     if args.component == 'rdm':
         QuartoRandom(args.name, (args.host, args.port), verbose=args.verbose)
 
     if args.component == 'ai':
         state = QuartoState()
-        quarto = AIClient([AI_Player(SSS(2)), AI_Player(Negamax(2))], state)
+        table = TT()
+        AI_algo = Negamax(2, tt=table)
+        quarto = AIClient([AI_Player(AI_algo), AI_Player(AI_algo)], state)
         quarto.play()
+        # profile.run('quarto.play()')
 
-    else:
+    if args.component == 'user':
         QuartoUser(args.name, (args.host, args.port), verbose=args.verbose)
