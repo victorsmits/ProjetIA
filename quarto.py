@@ -11,11 +11,9 @@ from easyAI import TwoPlayersGame, AI_Player, Human_Player
 from easyAI.AI import Negamax, SSS, DUAL, TT
 from lib import game
 import copy
-import time
+import time, datetime
 
 server_time = []
-A_time = []
-B_time = []
 class QuartoState(game.GameState):
     '''Class representing a state for the Quarto game.'''
 
@@ -156,8 +154,12 @@ class QuartoState(game.GameState):
         if len(old_time) == 1:
             print('start')
         else:
-            print('Player {} play in: {} second'.format((self._state['currentPlayer'] + 1) % 2, old_time[-1] - old_time[-2]))
-            print('total execution time: {} second'.format(old_time[-1] - old_time[0]))
+            delta = old_time[-1] - old_time[-2]
+            total = old_time[-1] - old_time[0]
+            Time_Delta = str(datetime.timedelta(seconds=delta))
+            Time_Total = str(datetime.timedelta(seconds=total))
+            print('Player {} play in: {}'.format((self._state['currentPlayer'] + 1) % 2,Time_Delta))
+            print('total execution time: {}'.format(Time_Total))
 
 
 class QuartoServer(game.GameServer):
