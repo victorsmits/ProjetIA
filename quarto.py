@@ -4,8 +4,6 @@
 # Version: March 29, 2018
 
 import argparse
-import socket
-import sys
 import random
 from random import randint
 import json
@@ -13,9 +11,11 @@ from easyAI import TwoPlayersGame, AI_Player, Human_Player
 from easyAI.AI import Negamax, SSS, DUAL, TT
 from lib import game
 import copy
-import profile
+import time
 
-
+server_time = []
+A_time = []
+B_time = []
 class QuartoState(game.GameState):
     '''Class representing a state for the Quarto game.'''
 
@@ -144,8 +144,20 @@ class QuartoState(game.GameState):
             print(state['pieceToPlay'])
             print(self.displayPiece(state['remainingPieces'][state['pieceToPlay']]))
 
+        global server_time
+        print('\nTimer:')
+        self.Timer(server_time)
+
     def nextPlayer(self):
         self._state['currentPlayer'] = (self._state['currentPlayer'] + 1) % 2
+
+    def Timer(self, old_time):
+        old_time.append(time.time())
+        if len(old_time) == 1:
+            print('start')
+        else:
+            print('Player {} play in: {} second'.format((self._state['currentPlayer'] + 1) % 2, old_time[-1] - old_time[-2]))
+            print('total execution time: {} second'.format(old_time[-1] - old_time[0]))
 
 
 class QuartoServer(game.GameServer):
@@ -166,7 +178,7 @@ class QuartoServer(game.GameServer):
 class QuartoClient(game.GameClient):
     """Class representing a client for the Quarto game."""
 
-    def __init__(self, name, server,  verbose=False):
+    def __init__(self, name, server, verbose=False):
         super().__init__(server, QuartoState, verbose=verbose)
         self.__name = name
 
@@ -174,17 +186,16 @@ class QuartoClient(game.GameClient):
         pass
 
     def _nextmove(self, state):
-        AI = Negamax(4, tt=TT())
+        AI = SSS(5, tt=TT(), win_score= 100)
         Quarto = AIClient([AI_Player(AI), AI_Player(AI)], state)
         ai_moves = Quarto.get_move()
         return json.dumps(ai_moves)
 
 
-
 class QuartoClient2(game.GameClient):
     """Class representing a client for the Quarto game."""
 
-    def __init__(self, name, server,  verbose=False):
+    def __init__(self, name, server, verbose=False):
         super().__init__(server, QuartoState, verbose=verbose)
         self.__name = name
 
@@ -192,7 +203,7 @@ class QuartoClient2(game.GameClient):
         pass
 
     def _nextmove(self, state):
-        AI_algo = Negamax(2, tt=TT())
+        AI_algo = SSS(5, tt=TT())
         Quarto = AIClient([AI_Player(AI_algo), AI_Player(AI_algo)], state)
         ai_moves = Quarto.get_move()
         return json.dumps(ai_moves)
@@ -343,7 +354,8 @@ if __name__ == '__main__':
 
     # Create the top-level parser
     parser = argparse.ArgumentParser(description='Quarto game')
-    subparsers = parser.add_subparsers(description='server client clientB user AI rdm', help='Quarto game components', dest='component')
+    subparsers = parser.add_subparsers(description='server client clientB user AI rdm', help='Quarto game components',
+                                       dest='component')
 
     # Create the parser for the 'server' subcommand
     server_parser = subparsers.add_parser('server', help='launch a server')
