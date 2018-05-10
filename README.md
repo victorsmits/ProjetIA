@@ -18,6 +18,7 @@ Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregi
  1. [ Fenêtre 1] : server du jeux
  2. [ Fenêtre 2] : client 1 du jeux
  3. [ Fenêtre 3] : client 2 du jeux
+
 *vous pouvez lancer 2 fois le même client*
 
 Pour les clients vous avez différent choix de méthode:
@@ -46,6 +47,6 @@ Server disant:
 
     ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5MTkzODg1MSwxNTEzNzQ3NzQ4LDE1MT
+eyJoaXN0b3J5IjpbMTYwMDAyNzEyNSwxNTEzNzQ3NzQ4LDE1MT
 M3NDc3NDhdfQ==
 -->
