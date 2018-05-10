@@ -17,17 +17,17 @@ L'intelligence principale, l'intelligence *client*, utilise la fonction id_solve
 #### Utilisation
 
 Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregistrer le jeux.
- 1. [Fenêtre 1] : server du jeux
- 2. [Fenêtre 2] : client 1 du jeux
- 3. [Fenêtre 3] : client 2 du jeux
+ 1. [Fenêtre 1] : Server du jeux
+ 2. [Fenêtre 2] : Client 1 du jeux
+ 3. [Fenêtre 3] : Client 2 du jeux
 *vous pouvez lancer 2 fois le même client*
 
 #### Intelligence
- 1. client : utilisation de id_solve *(recommander)*
- 2. clientB : utilisation de Negamax avec transposition table
- 3. user : pour jouer contre l'IA
- 4. rdm : AI agis 100% aléatoirement
- 5. prof : AI d'origine
+ 1. client : Utilisation de id_solve *(recommander)*
+ 2. clientB : Utilisation de Negamax avec transposition table
+ 3. user : Pour jouer contre l'IA
+ 4. rdm : IA agis 100% aléatoirement
+ 5. prof : IA d'origine
 
 #### Lancer une partie 
 ##### Server
@@ -62,7 +62,7 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTY1OTQ3MDQ3LC01MDQ3MzkxNjUsODEzMT
+eyJoaXN0b3J5IjpbOTE2Mjg0NjQ3LC01MDQ3MzkxNjUsODEzMT
 k0MDg5LC0xODgyMTI2Mjc3LC0xODgyMTI2Mjc3LC0xODgyMTI2
 Mjc3LC0xMjkyODk0MDgzLDExOTMyOTMwNDEsMTg4NjgwMzk0OS
 wtNDUxOTI1MDExLC0xNDYwNDcyNDIxLC0xNDYwNDcyNDIxLDky
