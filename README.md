@@ -25,7 +25,7 @@ Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregi
  1. client : utilisation de id_solve *(recommander)*
  2. clientB : utilisation de Negamax avec transposition table
  3. user : pour jouer contre l'IA
- 4. rdm : AI qui agis 100% aléatoirement
+ 4. rdm : AI agis 100% aléatoirement
  5. prof : AI d'origine
 
 #### Lancer une partie 
@@ -55,11 +55,11 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTI4OTQwODMsMTE5MzI5MzA0MSwxOD
-g2ODAzOTQ5LC00NTE5MjUwMTEsLTE0NjA0NzI0MjEsLTE0NjA0
-NzI0MjEsOTIyNjQ3NjcsLTE0NTYzOTMyMzEsMTE2ODU4MDg4OC
-wtMjA2NzYxOTI4NiwyMDI2NDc5MzkxLDg3MjUzNDczMywtNjU1
-MjcyODE1LC0xNDkxMzQ0MzUwLC0yMDM3NTM4MzE1LDg5MTM4OD
-cwMSwtMjA0MDI2MjYxNCwtMjAyMzgyNzQxNCw4NjQ2Njk0MDgs
-MTAzNzY0OTkyNl19
+eyJoaXN0b3J5IjpbLTE0NTA3MDkxMTgsLTEyOTI4OTQwODMsMT
+E5MzI5MzA0MSwxODg2ODAzOTQ5LC00NTE5MjUwMTEsLTE0NjA0
+NzI0MjEsLTE0NjA0NzI0MjEsOTIyNjQ3NjcsLTE0NTYzOTMyMz
+EsMTE2ODU4MDg4OCwtMjA2NzYxOTI4NiwyMDI2NDc5MzkxLDg3
+MjUzNDczMywtNjU1MjcyODE1LC0xNDkxMzQ0MzUwLC0yMDM3NT
+M4MzE1LDg5MTM4ODcwMSwtMjA0MDI2MjYxNCwtMjAyMzgyNzQx
+NCw4NjQ2Njk0MDhdfQ==
 -->
