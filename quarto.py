@@ -464,7 +464,7 @@ if __name__ == '__main__':
 
     if args.component == 'ai':
         state = QuartoState()
-        
+
         if args.algo == 'solve':
             if args.tt:
                 AIClient.ttentry = lambda self: state  # Send State to the Transposition tables

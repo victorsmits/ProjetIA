@@ -37,8 +37,7 @@ Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregi
 ##### Client
 ```html
 ./quarto.py <Intelligence> <Nom> --verbose
-```
-    
+``` 
 Vous avez aussi la possibilité de lancer les clients et server sur différente machine, il vous faudra donc préciser l'IP du host ainsi que le port de communication (*Pars défaut le host = localhost et le port = 5000*) :
     
 ##### Server disant
