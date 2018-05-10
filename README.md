@@ -30,24 +30,20 @@ Pour les clients vous avez différent choix de méthode:
 
 Pour lancer une partie vous devez utiliser les commande suivante:
 ##### Server:
-
     ./quarto.py server --verbose
 
 ##### Client:
-
     ./quarto.py *méthode* *nom* --verbose
 
 Vous avez aussi la possibilité de lancer les clients et server sur différente machine, il vous faudra donc préciser l'ip du host ainsi que le port de communication (*Pars défaut le host = localhost et le port = 5000*) :
     
 ##### Server disant:
-
     ./quarto.py server --verbose --host=*ip-local* --port=*port*
 
 ##### Client distant:
-
     ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzM4MDAzMDIyLC0xNjQ5OTU5MTY3LC00OD
-M0Nzk5MzksMTYwMDAyNzEyNSwxNTEzNzQ3NzQ4LDE1MTM3NDc3
-NDhdfQ==
+eyJoaXN0b3J5IjpbLTMyMzAyNDMwNiwtMTY0OTk1OTE2NywtND
+gzNDc5OTM5LDE2MDAwMjcxMjUsMTUxMzc0Nzc0OCwxNTEzNzQ3
+NzQ4XX0=
 -->
