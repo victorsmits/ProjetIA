@@ -8,7 +8,7 @@ Pour ce faire il nous a mis a disposition une librairie ainsi qu'un code pour la
 
 Pour créer mon intelligence artificiel j'ai décidée d'utiliser la librairie EasyAI [http://zulko.github.io/easyAI/index.html](http://zulko.github.io/easyAI/index.html) grace a cette librairie j'ai pu utiliser différent algorithme du type Alpha-Beta pruning, dans mon cas j'utilise plus précisément l'algorithme Negamax [https://en.wikipedia.org/wiki/Negamax](https://en.wikipedia.org/wiki/Negamax) ainsi que la méthode Solving qui va résoudre la partie en utilisant Negamax avec différente profondeur de recherche.
 
-Pour générer le coups qui sera jouer différente intelligence sont disponible ( voir **[Intelligence](#Intelligence)** ). 
+Pour générer le coups qui sera jouer différente intelligence sont disponible ( voir [Intelligence](#Intelligence) ). 
 
 L'intelligence principale, l'intelligence *client*, utilise la fonction id_solve de la class Solving qui va me retourner plusieurs information dont la mouvement le plus interessant pour arriver a la victoire le plus rapidement.
 
@@ -53,11 +53,11 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTYzOTMyMzEsMTE2ODU4MDg4OCwtMj
-A2NzYxOTI4NiwyMDI2NDc5MzkxLDg3MjUzNDczMywtNjU1Mjcy
-ODE1LC0xNDkxMzQ0MzUwLC0yMDM3NTM4MzE1LDg5MTM4ODcwMS
-wtMjA0MDI2MjYxNCwtMjAyMzgyNzQxNCw4NjQ2Njk0MDgsMTAz
-NzY0OTkyNiwxMDM3NjQ5OTI2LC0yOTc3OTYyOSwtMTczMzg0Mj
-A2NiwtMTUzNTIwMTM5MiwtMjEyODE2OTg2MCwtMzIzMDI0MzA2
-LC0xNjQ5OTU5MTY3XX0=
+eyJoaXN0b3J5IjpbLTM3MjgzMzY3OSwtMTQ1NjM5MzIzMSwxMT
+Y4NTgwODg4LC0yMDY3NjE5Mjg2LDIwMjY0NzkzOTEsODcyNTM0
+NzMzLC02NTUyNzI4MTUsLTE0OTEzNDQzNTAsLTIwMzc1MzgzMT
+UsODkxMzg4NzAxLC0yMDQwMjYyNjE0LC0yMDIzODI3NDE0LDg2
+NDY2OTQwOCwxMDM3NjQ5OTI2LDEwMzc2NDk5MjYsLTI5Nzc5Nj
+I5LC0xNzMzODQyMDY2LC0xNTM1MjAxMzkyLC0yMTI4MTY5ODYw
+LC0zMjMwMjQzMDZdfQ==
 -->
