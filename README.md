@@ -44,9 +44,8 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Il est aussi possible de tester la programmation de l' AI via la commande :
 
     ./quarto.py ai --verbose
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxODM2NDI4OSwtMTQ5MTM0NDM1MCwtMj
+eyJoaXN0b3J5IjpbLTY1NTI3MjgxNSwtMTQ5MTM0NDM1MCwtMj
 AzNzUzODMxNSw4OTEzODg3MDEsLTIwNDAyNjI2MTQsLTIwMjM4
 Mjc0MTQsODY0NjY5NDA4LDEwMzc2NDk5MjYsMTAzNzY0OTkyNi
 wtMjk3Nzk2MjksLTE3MzM4NDIwNjYsLTE1MzUyMDEzOTIsLTIx
