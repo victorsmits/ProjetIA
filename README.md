@@ -50,14 +50,14 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
  3. tt : active la transposition table. Default = False
 *C'est 3 arguments ne sont pas obligatoire*
 
-Le test AI n'a pas besoin du serveur il peux être lancer dans une seul fenêtre de terminal.
+Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyNjQ3OTM5MSw4NzI1MzQ3MzMsLTY1NT
-I3MjgxNSwtMTQ5MTM0NDM1MCwtMjAzNzUzODMxNSw4OTEzODg3
-MDEsLTIwNDAyNjI2MTQsLTIwMjM4Mjc0MTQsODY0NjY5NDA4LD
-EwMzc2NDk5MjYsMTAzNzY0OTkyNiwtMjk3Nzk2MjksLTE3MzM4
-NDIwNjYsLTE1MzUyMDEzOTIsLTIxMjgxNjk4NjAsLTMyMzAyND
-MwNiwtMTY0OTk1OTE2NywtNDgzNDc5OTM5LDE2MDAwMjcxMjUs
-MTUxMzc0Nzc0OF19
+eyJoaXN0b3J5IjpbLTMzMzc4NjU5NywyMDI2NDc5MzkxLDg3Mj
+UzNDczMywtNjU1MjcyODE1LC0xNDkxMzQ0MzUwLC0yMDM3NTM4
+MzE1LDg5MTM4ODcwMSwtMjA0MDI2MjYxNCwtMjAyMzgyNzQxNC
+w4NjQ2Njk0MDgsMTAzNzY0OTkyNiwxMDM3NjQ5OTI2LC0yOTc3
+OTYyOSwtMTczMzg0MjA2NiwtMTUzNTIwMTM5MiwtMjEyODE2OT
+g2MCwtMzIzMDI0MzA2LC0xNjQ5OTU5MTY3LC00ODM0Nzk5Mzks
+MTYwMDAyNzEyNV19
 -->
