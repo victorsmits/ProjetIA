@@ -5,7 +5,7 @@ Pour ce faire il nous a mis a disposition une librairie ainsi qu'un code pour la
 
 ## Technique utilisé
 
-Pour créer mon intelligence artificiel j'ai décidée d'utiliser la librairie EasyAI (*http://zulko.github.io/easyAI/index.html*) grace a cette librairie j'ai pu utiliser différent algorithme du type Alpha-Beta prunning, dans mon cas j'utilise plus précisément l'algorithme Negamax (*https://en.wikipedia.org/wiki/Negamax*) ainsi que la méthode Solving qui va résoudre la partie en utilisant Negamax avec différente profondeur de recherche.
+Pour créer mon intelligence artificiel j'ai décidée d'utiliser la librairie EasyAI [http://zulko.github.io/easyAI/index.html](http://zulko.github.io/easyAI/index.html) grace a cette librairie j'ai pu utiliser différent algorithme du type Alpha-Beta pruning, dans mon cas j'utilise plus précisément l'algorithme Negamax [https://en.wikipedia.org/wiki/Negamax](https://en.wikipedia.org/wiki/Negamax) ainsi que la méthode Solving qui va résoudre la partie en utilisant Negamax avec différente profondeur de recherche.
 
 ## Methode
 
@@ -17,7 +17,7 @@ Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregi
  1. [ Fenêtre 1] : server du jeux
  2. [ Fenêtre 2] : client 1 du jeux
  3. [ Fenêtre 3] : client 2 du jeux
-*vous pouvez lancer 2 fois le même client si les 2 clients sont dans 2 terminaux différent*
+*vous pouvez lancer 2 fois le même client*
 
 Pour les clients vous avez différent choix de méthode:
  1. [client] : utilisation de id_solve *(recommander)*
@@ -35,7 +35,7 @@ Server:
 
     ./quarto.py *méthode* *nom* --verbose
 
-Vous avez aussi la possibilité de lancer un server sur une autre machine, il vous faudra donc préciser l'ip du host ainsi que le port de communication:
+Vous avez aussi la possibilité de lancer les clients et server sur différente machine, il vous faudra donc préciser l'ip du host ainsi que le port de communication:
 
 Server disant:
 
