@@ -33,19 +33,20 @@ Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregi
     ./quarto.py server --verbose
 
 ##### Client :
-    ./quarto.py *Intelligence* *Nom* --verbose
+    ./quarto.py <Intelligence> <Nom> --verbose
     
 Vous avez aussi la possibilité de lancer les clients et server sur différente machine, il vous faudra donc préciser l'IP du host ainsi que le port de communication (*Pars défaut le host = localhost et le port = 5000*) :
     
 ##### Server disant :
-    ./quarto.py server --verbose --host= *IP* --port= *Port*
+    ./quarto.py server --verbose --host= <IP> --port= <Port>
 
 ##### Client distant :
-    ./quarto.py <Intelligence> <Nom> --verbose --host= <IP> --port= <Port*
+    ./quarto.py <Intelligence> <Nom> --verbose --host= <IP> --port= <Port>
     
 #### Test AI
+```python
     ./quarto.py ai --verbose --algo= <algo> --depth= <depth> --tt
-
+```
  1. algo : choisissez entre Negamax, SSS, solve. Default = Negamax
  2. depth : profondeur de la recherche de l'AI . Default = 3
  3. tt : active la transposition table. Default = False
@@ -55,11 +56,11 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzI4NzQ1NTMsMTE5MzI5MzA0MSwxODg2OD
-AzOTQ5LC00NTE5MjUwMTEsLTE0NjA0NzI0MjEsLTE0NjA0NzI0
-MjEsOTIyNjQ3NjcsLTE0NTYzOTMyMzEsMTE2ODU4MDg4OCwtMj
-A2NzYxOTI4NiwyMDI2NDc5MzkxLDg3MjUzNDczMywtNjU1Mjcy
-ODE1LC0xNDkxMzQ0MzUwLC0yMDM3NTM4MzE1LDg5MTM4ODcwMS
-wtMjA0MDI2MjYxNCwtMjAyMzgyNzQxNCw4NjQ2Njk0MDgsMTAz
-NzY0OTkyNl19
+eyJoaXN0b3J5IjpbLTE2MDI3Nzg3NzcsMTE5MzI5MzA0MSwxOD
+g2ODAzOTQ5LC00NTE5MjUwMTEsLTE0NjA0NzI0MjEsLTE0NjA0
+NzI0MjEsOTIyNjQ3NjcsLTE0NTYzOTMyMzEsMTE2ODU4MDg4OC
+wtMjA2NzYxOTI4NiwyMDI2NDc5MzkxLDg3MjUzNDczMywtNjU1
+MjcyODE1LC0xNDkxMzQ0MzUwLC0yMDM3NTM4MzE1LDg5MTM4OD
+cwMSwtMjA0MDI2MjYxNCwtMjAyMzgyNzQxNCw4NjQ2Njk0MDgs
+MTAzNzY0OTkyNl19
 -->
