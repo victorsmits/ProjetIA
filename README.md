@@ -48,16 +48,17 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
  1. algo : choisissez entre Negamax, SSS, solve. Default = Negamax
  2. depth : profondeur de la recherche de l'AI . Default = 3
  3. tt : active la transposition table. Default = False
+
 *C'est 3 arguments ne sont pas obligatoire*
 
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODM2MTU2NjMsLTE0NTYzOTMyMzEsMT
-E2ODU4MDg4OCwtMjA2NzYxOTI4NiwyMDI2NDc5MzkxLDg3MjUz
-NDczMywtNjU1MjcyODE1LC0xNDkxMzQ0MzUwLC0yMDM3NTM4Mz
-E1LDg5MTM4ODcwMSwtMjA0MDI2MjYxNCwtMjAyMzgyNzQxNCw4
-NjQ2Njk0MDgsMTAzNzY0OTkyNiwxMDM3NjQ5OTI2LC0yOTc3OT
-YyOSwtMTczMzg0MjA2NiwtMTUzNTIwMTM5MiwtMjEyODE2OTg2
-MCwtMzIzMDI0MzA2XX0=
+eyJoaXN0b3J5IjpbOTIyNjQ3NjcsLTE0NTYzOTMyMzEsMTE2OD
+U4MDg4OCwtMjA2NzYxOTI4NiwyMDI2NDc5MzkxLDg3MjUzNDcz
+MywtNjU1MjcyODE1LC0xNDkxMzQ0MzUwLC0yMDM3NTM4MzE1LD
+g5MTM4ODcwMSwtMjA0MDI2MjYxNCwtMjAyMzgyNzQxNCw4NjQ2
+Njk0MDgsMTAzNzY0OTkyNiwxMDM3NjQ5OTI2LC0yOTc3OTYyOS
+wtMTczMzg0MjA2NiwtMTUzNTIwMTM5MiwtMjEyODE2OTg2MCwt
+MzIzMDI0MzA2XX0=
 -->
