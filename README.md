@@ -43,7 +43,6 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
     ./quarto.py *Intelligence* *Nom* --verbose --host= *IP* --port= *Port*
     
 #### Test AI
-
     ./quarto.py ai --verbose --algo= *algo* --depth= *depth* --tt
 
  1. algo : choisissez entre Negamax, SSS, solve. Default = Negamax
@@ -54,11 +53,11 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Le test AI n'a pas besoin du serveur il peux être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODcyNTM0NzMzLC02NTUyNzI4MTUsLTE0OT
-EzNDQzNTAsLTIwMzc1MzgzMTUsODkxMzg4NzAxLC0yMDQwMjYy
-NjE0LC0yMDIzODI3NDE0LDg2NDY2OTQwOCwxMDM3NjQ5OTI2LD
-EwMzc2NDk5MjYsLTI5Nzc5NjI5LC0xNzMzODQyMDY2LC0xNTM1
-MjAxMzkyLC0yMTI4MTY5ODYwLC0zMjMwMjQzMDYsLTE2NDk5NT
-kxNjcsLTQ4MzQ3OTkzOSwxNjAwMDI3MTI1LDE1MTM3NDc3NDgs
+eyJoaXN0b3J5IjpbMjAyNjQ3OTM5MSw4NzI1MzQ3MzMsLTY1NT
+I3MjgxNSwtMTQ5MTM0NDM1MCwtMjAzNzUzODMxNSw4OTEzODg3
+MDEsLTIwNDAyNjI2MTQsLTIwMjM4Mjc0MTQsODY0NjY5NDA4LD
+EwMzc2NDk5MjYsMTAzNzY0OTkyNiwtMjk3Nzk2MjksLTE3MzM4
+NDIwNjYsLTE1MzUyMDEzOTIsLTIxMjgxNjk4NjAsLTMyMzAyND
+MwNiwtMTY0OTk1OTE2NywtNDgzNDc5OTM5LDE2MDAwMjcxMjUs
 MTUxMzc0Nzc0OF19
 -->
