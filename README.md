@@ -37,7 +37,7 @@ Server:
 
     ./quarto.py *méthode* *nom* --verbose
 
-Vous avez aussi la possibilité de lancer les clients et server sur différente machine, il vous faudra donc préciser l'ip du host ainsi que le port de communication (Pars défaut le host = localhost et le port = 5000) :
+Vous avez aussi la possibilité de lancer les clients et server sur différente machine, il vous faudra donc préciser l'ip du host ainsi que le port de communication (*Pars défaut le host = localhost et le port = 5000*) :
     
 Server disant:
 
@@ -47,6 +47,6 @@ Server disant:
 
     ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NDg1ODMxNTcsMTYwMDAyNzEyNSwxNT
-EzNzQ3NzQ4LDE1MTM3NDc3NDhdfQ==
+eyJoaXN0b3J5IjpbLTQ4MzQ3OTkzOSwxNjAwMDI3MTI1LDE1MT
+M3NDc3NDgsMTUxMzc0Nzc0OF19
 -->
