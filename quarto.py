@@ -12,13 +12,14 @@ import time
 
 from random import randint
 from easyAI import TwoPlayersGame, AI_Player
-from easyAI.AI import Negamax, TT, solving
+from easyAI.AI import Negamax, TT
+from easyAI.AI.solving import id_solve
 from lib import game
 
 server_time = []
 
 
-# Etat du jeux
+# State of the game
 class QuartoState(game.GameState):
     '''Class representing a state for the Quarto game.'''
 
@@ -195,10 +196,13 @@ class QuartoClient(game.GameClient):
         pass
 
     def _nextmove(self, state):
-        AI_algo = Negamax(3, tt=TT())
-        Quarto = AIClient([AI_Player(AI_algo), AI_Player(AI_algo)], state)
-        r, d, m = solving.id_solve(Quarto, ai_depths=range(3, 4), win_score=9)
-        return json.dumps(m)  # send the move
+        # solve the game and give the move to do it, id_solve give me:
+        #   • move: Best move to play for the player.
+        #   • result: Either 1 (certain victory of the first player) or -1 (certain defeat) or 0 (either draw)
+        #   • depth: The minimal number of moves before victory (or defeat)
+
+        result, depth, move = id_solve(AIClient([], state), ai_depths=range(2, 4), win_score=90)
+        return json.dumps(move)  # send the move
 
 
 # game client 2 => use to test the AI
@@ -212,11 +216,66 @@ class QuartoClient2(game.GameClient):
     def _handle(self, message):
         pass
 
-    def _nextmove(self, state):
-        AI_algo = Negamax(2, tt=TT())
-        Quarto = AIClient([AI_Player(AI_algo), AI_Player(AI_algo)], state)
-        r, d, m = solving.id_solve(Quarto, ai_depths=range(2, 3), win_score=9)
-        return json.dumps(m)  # send the move
+    def _nextmove(self, State):
+        AI = Negamax(3)
+        Quarto = AIClient([AI_Player(AI), AI_Player(AI)], State)
+        move = Quarto.get_move()
+        return json.dumps(move)  # send the move
+
+
+# easy IA
+class AIClient(TwoPlayersGame):
+    def __init__(self, players, State):
+        self.State = State
+        self.players = players
+        self.nplayer = 1
+
+    def possible_moves(self):  # génere la liste de tout les coups possible en fonction du plateau
+        liste = []
+        visible = self.State._state['visible']
+
+        if visible['board'].count(None) == 1:  # si il n'y a plus qu'une place sur le plateau joue la derniere piece
+            liste.append({'pos': visible['board'].index(None), 'nextPiece': 0})
+
+        else:
+            for i in range(16):
+                for n in range(len(visible['remainingPieces']) - 1):
+                    move = {}
+                    move['pos'] = i
+                    move['nextPiece'] = n
+                    move['quarto'] = True
+                    if visible['board'][i] is None:
+                        try:
+                            CopyState = copy.deepcopy(self.State)
+                            CopyState.applymove(move)
+                        except:
+                            del (move['quarto'])
+                        liste.append(move)
+        return liste
+
+    def make_move(self, move):
+        position = move['pos']
+        visible = self.State._state['visible']
+        if visible['board'][position] is None:
+            self.State.applymove(move)
+
+    def win(self):
+        return self.State.winner()
+
+    def is_over(self):
+        return False if self.win() == -1 else True
+
+    def show(self):
+        self.State.prettyprint()
+
+    def scoring(self):
+        Score = self.win()
+        if Score == self.nopponent:
+            return 100
+        if Score in [-1]:
+            return 0
+        else:
+            return -100
 
 
 # play against IA
@@ -293,61 +352,6 @@ class QuartoRandom(game.GameClient):
             del (move['quarto'])
 
         return json.dumps(move)
-
-
-# easy IA
-class AIClient(TwoPlayersGame):
-    def __init__(self, players, State):
-        self.State = State
-        self.players = players
-        self.nplayer = 1
-
-    def possible_moves(self):  # génere la liste de tout les coups possible en fonction du plateau
-        liste = []
-        visible = self.State._state['visible']
-
-        if visible['board'].count(None) == 1:  # si il n'y a plus qu'une place sur le plateau joue la derniere piece
-            liste.append({'pos': visible['board'].index(None), 'nextPiece': 0})
-
-        else:
-            for i in range(16):
-                for n in range(len(visible['remainingPieces']) - 1):
-                    move = {}
-                    move['pos'] = i
-                    move['nextPiece'] = n
-                    move['quarto'] = True
-                    if visible['board'][i] is None:
-                        try:
-                            CopyState = copy.deepcopy(self.State)
-                            CopyState.applymove(move)
-                        except:
-                            del (move['quarto'])
-                        liste.append(move)
-        return liste
-
-    def make_move(self, move):
-        position = move['pos']
-        visible = self.State._state['visible']
-        if visible['board'][position] is None:
-            self.State.applymove(move)
-
-    def win(self):
-        return self.State.winner()
-
-    def is_over(self):
-        return False if self.win() == -1 else True
-
-    def show(self):
-        self.State.prettyprint()
-
-    def scoring(self):
-        Score = self.win()
-        if Score == self.nopponent % 2:
-            return 10
-        if Score in [-1, 2]:
-            return 0
-        else:
-            return -10
 
 
 # code client d'origine
@@ -459,7 +463,7 @@ if __name__ == '__main__':
         scoring = lambda game: 100 if game.win() == state._state['currentPlayer'] else 0
         AI_algo = Negamax(4, scoring, tt=TT())
         quarto = AIClient([AI_Player(AI_algo), AI_Player(AI_algo)], state)
-        r, d, m = solving.id_solve(quarto, ai_depths=range(1, 4), win_score=90)
+        r, d, m = id_solve(quarto, ai_depths=range(1, 4), win_score=90)
         print('r=', r)
         print('d=', d)
         print('m=', m)
