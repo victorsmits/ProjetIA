@@ -43,4 +43,4 @@ Server disant:
 
  Client distant:
 
-    ./quarto.py *méthode* *nom* --verbose --host=*ip local* --port=*port*
+    ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
