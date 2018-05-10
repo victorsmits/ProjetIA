@@ -1,8 +1,6 @@
-````
 Charle Vandermies 
 Victor Smits 16107
-````
----
+***
 # Projet AI Quarto
 
 Pour notre travaille de fin de 2ème Bac en ingénieur industriel a l'Ecam orientation Génie Electrique, notre professeur d'informatique nous a mis au défis de créer une intelligence artificiel jouant au jeux Quarto.
@@ -57,11 +55,11 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTc1MjM4MTUsMTg4NjgwMzk0OSwtND
-UxOTI1MDExLC0xNDYwNDcyNDIxLC0xNDYwNDcyNDIxLDkyMjY0
-NzY3LC0xNDU2MzkzMjMxLDExNjg1ODA4ODgsLTIwNjc2MTkyOD
-YsMjAyNjQ3OTM5MSw4NzI1MzQ3MzMsLTY1NTI3MjgxNSwtMTQ5
-MTM0NDM1MCwtMjAzNzUzODMxNSw4OTEzODg3MDEsLTIwNDAyNj
-I2MTQsLTIwMjM4Mjc0MTQsODY0NjY5NDA4LDEwMzc2NDk5MjYs
-MTAzNzY0OTkyNl19
+eyJoaXN0b3J5IjpbLTQ3NDE2NDg3MiwxODg2ODAzOTQ5LC00NT
+E5MjUwMTEsLTE0NjA0NzI0MjEsLTE0NjA0NzI0MjEsOTIyNjQ3
+NjcsLTE0NTYzOTMyMzEsMTE2ODU4MDg4OCwtMjA2NzYxOTI4Ni
+wyMDI2NDc5MzkxLDg3MjUzNDczMywtNjU1MjcyODE1LC0xNDkx
+MzQ0MzUwLC0yMDM3NTM4MzE1LDg5MTM4ODcwMSwtMjA0MDI2Mj
+YxNCwtMjAyMzgyNzQxNCw4NjQ2Njk0MDgsMTAzNzY0OTkyNiwx
+MDM3NjQ5OTI2XX0=
 -->
