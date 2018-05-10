@@ -4,7 +4,7 @@
 Pour notre travaille de fin de 2ème Bac en ingénieur industriel a l'Ecam orientation Génie Electrique, notre professeur d'informatique nous a mis au défis de créer une intelligence artificiel jouant au jeux Quarto.
 Pour ce faire il nous a mis a disposition une librairie ainsi qu'un code pour la structure du jeux.
 
-## Technique utilisée
+## Fonctionnement 
 
 Pour créer mon intelligence artificiel j'ai décidée d'utiliser la librairie EasyAI [http://zulko.github.io/easyAI/index.html](http://zulko.github.io/easyAI/index.html) grace a cette librairie j'ai pu utiliser différent algorithme du type Alpha-Beta pruning, dans mon cas j'utilise plus précisément l'algorithme Negamax [https://en.wikipedia.org/wiki/Negamax](https://en.wikipedia.org/wiki/Negamax) ainsi que la méthode Solving qui va résoudre la partie en utilisant Negamax avec différente profondeur de recherche.
 
@@ -42,7 +42,7 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 ##### Client distant :
     ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzMDg2NDUxMSwtMjEyODE2OTg2MCwtMz
-IzMDI0MzA2LC0xNjQ5OTU5MTY3LC00ODM0Nzk5MzksMTYwMDAy
-NzEyNSwxNTEzNzQ3NzQ4LDE1MTM3NDc3NDhdfQ==
+eyJoaXN0b3J5IjpbLTE1MzUyMDEzOTIsLTIxMjgxNjk4NjAsLT
+MyMzAyNDMwNiwtMTY0OTk1OTE2NywtNDgzNDc5OTM5LDE2MDAw
+MjcxMjUsMTUxMzc0Nzc0OCwxNTEzNzQ3NzQ4XX0=
 -->
