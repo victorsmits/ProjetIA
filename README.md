@@ -10,7 +10,7 @@ Pour créer mon intelligence artificiel j'ai décidée d'utiliser la librairie E
 
 Pour générer le coups qui sera jouer différente intelligence sont disponible ( voir **[Intelligence](https://github.com/victorsmits/ProjetIA#intelligence)** ). 
 
-L'intelligence principale, l'intelligence *client*, utilise la fonction id_solve de la class Solving qui va me retourner plusieurs information dont la movement le plus interessant pour arriver a la victoire le plus rapidement.
+L'intelligence principale, l'intelligence *client*, utilise la fonction id_solve de la class Solving qui va me retourner plusieurs information dont la mouvement le plus interessant pour arriver a la victoire le plus rapidement.
 
 ### Utilisation
 
@@ -23,7 +23,7 @@ Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregi
 #### Intelligence
  1. client : utilisation de id_solve *(recommander)*
  2. clientB : utilisation de Negamax avec transposition table
- 3. user : pour jouer contre l'AI
+ 3. user : pour jouer contre l'IA
  4. rdm : AI qui agis 100% aléatoirement
  5. prof : AI d'origine
 
@@ -34,7 +34,7 @@ Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregi
 ##### Client :
     ./quarto.py *Intelligence* *Nom* --verbose
 
-Vous avez aussi la possibilité de lancer les clients et server sur différente machine, il vous faudra donc préciser l'ip du host ainsi que le port de communication (*Pars défaut le host = localhost et le port = 5000*) :
+Vous avez aussi la possibilité de lancer les clients et server sur différente machine, il vous faudra donc préciser l'IP du host ainsi que le port de communication (*Pars défaut le host = localhost et le port = 5000*) :
     
 ##### Server disant :
     ./quarto.py server --verbose --host= *IP* --port= *Port*
@@ -53,11 +53,11 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzMzc4NjU5NywyMDI2NDc5MzkxLDg3Mj
-UzNDczMywtNjU1MjcyODE1LC0xNDkxMzQ0MzUwLC0yMDM3NTM4
-MzE1LDg5MTM4ODcwMSwtMjA0MDI2MjYxNCwtMjAyMzgyNzQxNC
-w4NjQ2Njk0MDgsMTAzNzY0OTkyNiwxMDM3NjQ5OTI2LC0yOTc3
-OTYyOSwtMTczMzg0MjA2NiwtMTUzNTIwMTM5MiwtMjEyODE2OT
-g2MCwtMzIzMDI0MzA2LC0xNjQ5OTU5MTY3LC00ODM0Nzk5Mzks
-MTYwMDAyNzEyNV19
+eyJoaXN0b3J5IjpbLTIwNjc2MTkyODYsMjAyNjQ3OTM5MSw4Nz
+I1MzQ3MzMsLTY1NTI3MjgxNSwtMTQ5MTM0NDM1MCwtMjAzNzUz
+ODMxNSw4OTEzODg3MDEsLTIwNDAyNjI2MTQsLTIwMjM4Mjc0MT
+QsODY0NjY5NDA4LDEwMzc2NDk5MjYsMTAzNzY0OTkyNiwtMjk3
+Nzk2MjksLTE3MzM4NDIwNjYsLTE1MzUyMDEzOTIsLTIxMjgxNj
+k4NjAsLTMyMzAyNDMwNiwtMTY0OTk1OTE2NywtNDgzNDc5OTM5
+LDE2MDAwMjcxMjVdfQ==
 -->
