@@ -19,7 +19,7 @@ Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregi
  3. [Fenêtre 3] : client 2 du jeux
 *vous pouvez lancer 2 fois le même client*
 
-### Intelligence
+#### Intelligence
  1. client : utilisation de id_solve *(recommander)*
  2. clientB : utilisation de Negamax avec transposition table
  3. user : pour jouer contre l'AI
@@ -41,8 +41,8 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 ##### Client distant :
     ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5Nzc5NjI5LC0xNzMzODQyMDY2LC0xNT
-M1MjAxMzkyLC0yMTI4MTY5ODYwLC0zMjMwMjQzMDYsLTE2NDk5
-NTkxNjcsLTQ4MzQ3OTkzOSwxNjAwMDI3MTI1LDE1MTM3NDc3ND
-gsMTUxMzc0Nzc0OF19
+eyJoaXN0b3J5IjpbMTAzNzY0OTkyNiwtMjk3Nzk2MjksLTE3Mz
+M4NDIwNjYsLTE1MzUyMDEzOTIsLTIxMjgxNjk4NjAsLTMyMzAy
+NDMwNiwtMTY0OTk1OTE2NywtNDgzNDc5OTM5LDE2MDAwMjcxMj
+UsMTUxMzc0Nzc0OCwxNTEzNzQ3NzQ4XX0=
 -->
