@@ -21,11 +21,11 @@ Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregi
 *vous pouvez lancer 2 fois le même client*
 
 Pour les clients vous avez différent choix de méthode:
- 1. [client] : utilisation de id_solve *(recommander)*
- 2. [clientB] : utilisation de Negamax avec transposition table
- 3. [user] : pour jouer contre l'AI
- 4. [rdm] : AI qui agis 100% aléatoirement
- 5. [prof] : AI d'origine
+ 1. client : utilisation de id_solve *(recommander)*
+ 2. clientB : utilisation de Negamax avec transposition table
+ 3. user : pour jouer contre l'AI
+ 4. rdm : AI qui agis 100% aléatoirement
+ 5. prof : AI d'origine
 
 Pour lancer une partie vous devez utiliser les commande suivante:
 Server:
@@ -46,6 +46,6 @@ Server disant:
 
     ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NDczMDM4MzMsMTUxMzc0Nzc0OCwxNT
-EzNzQ3NzQ4XX0=
+eyJoaXN0b3J5IjpbMTY5MTkzODg1MSwxNTEzNzQ3NzQ4LDE1MT
+M3NDc3NDhdfQ==
 -->
