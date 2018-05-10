@@ -42,7 +42,7 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 ##### Client distant :
     ./quarto.py *Intelligence* *Nom* --verbose --host= *IP* --port= *Port*
     
-### Test AI
+#### Test AI
 
     ./quarto.py ai --verbose --algo= *algo* --depth= *depth* --tt
 
@@ -51,12 +51,14 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
  3. tt : active la transposition table. Default = False
 *C'est 3 arguments ne sont pas obligatoire*
 
+Le test AI n'a pas besoin du serveur il peux être lancer dans une seul fenêtre de terminal.
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMTgxNDM2NDEsLTY1NTI3MjgxNSwtMT
-Q5MTM0NDM1MCwtMjAzNzUzODMxNSw4OTEzODg3MDEsLTIwNDAy
-NjI2MTQsLTIwMjM4Mjc0MTQsODY0NjY5NDA4LDEwMzc2NDk5Mj
-YsMTAzNzY0OTkyNiwtMjk3Nzk2MjksLTE3MzM4NDIwNjYsLTE1
-MzUyMDEzOTIsLTIxMjgxNjk4NjAsLTMyMzAyNDMwNiwtMTY0OT
-k1OTE2NywtNDgzNDc5OTM5LDE2MDAwMjcxMjUsMTUxMzc0Nzc0
-OCwxNTEzNzQ3NzQ4XX0=
+eyJoaXN0b3J5IjpbODcyNTM0NzMzLC02NTUyNzI4MTUsLTE0OT
+EzNDQzNTAsLTIwMzc1MzgzMTUsODkxMzg4NzAxLC0yMDQwMjYy
+NjE0LC0yMDIzODI3NDE0LDg2NDY2OTQwOCwxMDM3NjQ5OTI2LD
+EwMzc2NDk5MjYsLTI5Nzc5NjI5LC0xNzMzODQyMDY2LC0xNTM1
+MjAxMzkyLC0yMTI4MTY5ODYwLC0zMjMwMjQzMDYsLTE2NDk5NT
+kxNjcsLTQ4MzQ3OTkzOSwxNjAwMDI3MTI1LDE1MTM3NDc3NDgs
+MTUxMzc0Nzc0OF19
 -->
