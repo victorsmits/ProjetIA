@@ -42,9 +42,9 @@ Server disant:
 
     ./quarto.py server --verbose --host=*ip-local* --port=*port*
 
-
+ Client distant:
 
     ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIyOTY2OTQ2MiwxNTEzNzQ3NzQ4XX0=
+eyJoaXN0b3J5IjpbMTUxMzc0Nzc0OCwxNTEzNzQ3NzQ4XX0=
 -->
