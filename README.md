@@ -28,7 +28,7 @@ Pour les clients vous avez différent choix de méthode:
  4. rdm : AI qui agis 100% aléatoirement
  5. prof : AI d'origine
 
-Pour lancer une partie vous devez utiliser les commande suivante:
+#### Lancer une partie : 
 ##### Server :
     ./quarto.py server --verbose
 
@@ -43,7 +43,7 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 ##### Client distant :
     ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI3MjY0MjAwNCwtMjEyODE2OTg2MCwtMz
+eyJoaXN0b3J5IjpbMTEwNDcyMjgyMywtMjEyODE2OTg2MCwtMz
 IzMDI0MzA2LC0xNjQ5OTU5MTY3LC00ODM0Nzk5MzksMTYwMDAy
 NzEyNSwxNTEzNzQ3NzQ4LDE1MTM3NDc3NDhdfQ==
 -->
