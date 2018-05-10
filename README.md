@@ -46,7 +46,7 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 ```
 ##### Client distant :
 ```html
-./quarto.py <Intelligence> <Nom> --verbose --host= <IP> --port= <Port>
+./quarto.py <a href="http://assemble.io">Assemble</a> <Nom> --verbose --host= <IP> --port= <Port>
 ```    
 #### Test AI
 ```html
@@ -61,11 +61,11 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODIxMjYyNzcsLTEyOTI4OTQwODMsMT
-E5MzI5MzA0MSwxODg2ODAzOTQ5LC00NTE5MjUwMTEsLTE0NjA0
-NzI0MjEsLTE0NjA0NzI0MjEsOTIyNjQ3NjcsLTE0NTYzOTMyMz
-EsMTE2ODU4MDg4OCwtMjA2NzYxOTI4NiwyMDI2NDc5MzkxLDg3
-MjUzNDczMywtNjU1MjcyODE1LC0xNDkxMzQ0MzUwLC0yMDM3NT
-M4MzE1LDg5MTM4ODcwMSwtMjA0MDI2MjYxNCwtMjAyMzgyNzQx
-NCw4NjQ2Njk0MDhdfQ==
+eyJoaXN0b3J5IjpbLTE2MTg1MzMzMzcsLTE4ODIxMjYyNzcsLT
+EyOTI4OTQwODMsMTE5MzI5MzA0MSwxODg2ODAzOTQ5LC00NTE5
+MjUwMTEsLTE0NjA0NzI0MjEsLTE0NjA0NzI0MjEsOTIyNjQ3Nj
+csLTE0NTYzOTMyMzEsMTE2ODU4MDg4OCwtMjA2NzYxOTI4Niwy
+MDI2NDc5MzkxLDg3MjUzNDczMywtNjU1MjcyODE1LC0xNDkxMz
+Q0MzUwLC0yMDM3NTM4MzE1LDg5MTM4ODcwMSwtMjA0MDI2MjYx
+NCwtMjAyMzgyNzQxNF19
 -->
