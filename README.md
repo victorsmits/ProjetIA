@@ -31,9 +31,8 @@ Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregi
     ./quarto.py server --verbose
 
 ##### Client :
-```
     ./quarto.py *Intelligence* *Nom* --verbose
-```
+    
 Vous avez aussi la possibilité de lancer les clients et server sur différente machine, il vous faudra donc préciser l'IP du host ainsi que le port de communication (*Pars défaut le host = localhost et le port = 5000*) :
     
 ##### Server disant :
@@ -54,7 +53,7 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAwOTE0NDcxNywtNDUxOTI1MDExLC0xND
+eyJoaXN0b3J5IjpbMTg4NjgwMzk0OSwtNDUxOTI1MDExLC0xND
 YwNDcyNDIxLC0xNDYwNDcyNDIxLDkyMjY0NzY3LC0xNDU2Mzkz
 MjMxLDExNjg1ODA4ODgsLTIwNjc2MTkyODYsMjAyNjQ3OTM5MS
 w4NzI1MzQ3MzMsLTY1NTI3MjgxNSwtMTQ5MTM0NDM1MCwtMjAz
