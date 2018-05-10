@@ -1,4 +1,4 @@
-Charle Vandermies 
+Charle Vandermies 15123
 Victor Smits 16107
 ***
 # Projet AI Quarto
@@ -55,11 +55,11 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ3NDE2NDg3MiwxODg2ODAzOTQ5LC00NT
-E5MjUwMTEsLTE0NjA0NzI0MjEsLTE0NjA0NzI0MjEsOTIyNjQ3
-NjcsLTE0NTYzOTMyMzEsMTE2ODU4MDg4OCwtMjA2NzYxOTI4Ni
-wyMDI2NDc5MzkxLDg3MjUzNDczMywtNjU1MjcyODE1LC0xNDkx
-MzQ0MzUwLC0yMDM3NTM4MzE1LDg5MTM4ODcwMSwtMjA0MDI2Mj
-YxNCwtMjAyMzgyNzQxNCw4NjQ2Njk0MDgsMTAzNzY0OTkyNiwx
-MDM3NjQ5OTI2XX0=
+eyJoaXN0b3J5IjpbNjk3MDU1NzQsMTg4NjgwMzk0OSwtNDUxOT
+I1MDExLC0xNDYwNDcyNDIxLC0xNDYwNDcyNDIxLDkyMjY0NzY3
+LC0xNDU2MzkzMjMxLDExNjg1ODA4ODgsLTIwNjc2MTkyODYsMj
+AyNjQ3OTM5MSw4NzI1MzQ3MzMsLTY1NTI3MjgxNSwtMTQ5MTM0
+NDM1MCwtMjAzNzUzODMxNSw4OTEzODg3MDEsLTIwNDAyNjI2MT
+QsLTIwMjM4Mjc0MTQsODY0NjY5NDA4LDEwMzc2NDk5MjYsMTAz
+NzY0OTkyNl19
 -->
