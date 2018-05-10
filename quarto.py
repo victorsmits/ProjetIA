@@ -217,7 +217,7 @@ class QuartoClient2(game.GameClient):
         pass
 
     def _nextmove(self, State):
-        AIClient.ttentry = lambda self: State       # send State to the Transposition tables
+        AIClient.ttentry = lambda self: State         # Send State to the Transposition tables
         AI = Negamax(6, tt=TT(), win_score=90)        # Algorithm(depth, scoring=None, win_score=inf,tt=None)
         Quarto = AIClient([AI_Player(AI), AI_Player(AI)], State)
         Move = Quarto.get_move()        # find the best move possible
