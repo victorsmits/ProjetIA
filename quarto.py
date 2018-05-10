@@ -273,7 +273,7 @@ class AIClient(TwoPlayersGame):
         Score = self.win()
         if Score == self.nopponent:
             return 100
-        if Score in [-1]:
+        if Score in [-1, 2]:
             return 0
         else:
             return -100
