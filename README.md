@@ -20,6 +20,8 @@ Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregi
  3. [Fenêtre 3] : client 2 du jeux
 *vous pouvez lancer 2 fois le même client*
 
+
+
 #### Intelligence
  1. client : utilisation de id_solve *(recommander)*
  2. clientB : utilisation de Negamax avec transposition table
@@ -54,11 +56,11 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjA0NzI0MjEsOTIyNjQ3NjcsLTE0NT
-YzOTMyMzEsMTE2ODU4MDg4OCwtMjA2NzYxOTI4NiwyMDI2NDc5
-MzkxLDg3MjUzNDczMywtNjU1MjcyODE1LC0xNDkxMzQ0MzUwLC
-0yMDM3NTM4MzE1LDg5MTM4ODcwMSwtMjA0MDI2MjYxNCwtMjAy
-MzgyNzQxNCw4NjQ2Njk0MDgsMTAzNzY0OTkyNiwxMDM3NjQ5OT
-I2LC0yOTc3OTYyOSwtMTczMzg0MjA2NiwtMTUzNTIwMTM5Miwt
-MjEyODE2OTg2MF19
+eyJoaXN0b3J5IjpbMTU2OTYwMjIzOSwtMTQ2MDQ3MjQyMSw5Mj
+I2NDc2NywtMTQ1NjM5MzIzMSwxMTY4NTgwODg4LC0yMDY3NjE5
+Mjg2LDIwMjY0NzkzOTEsODcyNTM0NzMzLC02NTUyNzI4MTUsLT
+E0OTEzNDQzNTAsLTIwMzc1MzgzMTUsODkxMzg4NzAxLC0yMDQw
+MjYyNjE0LC0yMDIzODI3NDE0LDg2NDY2OTQwOCwxMDM3NjQ5OT
+I2LDEwMzc2NDk5MjYsLTI5Nzc5NjI5LC0xNzMzODQyMDY2LC0x
+NTM1MjAxMzkyXX0=
 -->
