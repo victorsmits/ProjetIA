@@ -20,14 +20,14 @@ Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregi
  3. [Fenêtre 3] : client 2 du jeux
 *vous pouvez lancer 2 fois le même client*
 
-#### Intelligence
+### Intelligence
  1. client : utilisation de id_solve *(recommander)*
  2. clientB : utilisation de Negamax avec transposition table
  3. user : pour jouer contre l'IA
  4. rdm : AI qui agis 100% aléatoirement
  5. prof : AI d'origine
 
-#### Lancer une partie 
+### Lancer une partie 
 ##### Server :
     ./quarto.py server --verbose
 
@@ -42,7 +42,7 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 ##### Client distant :
     ./quarto.py *Intelligence* *Nom* --verbose --host= *IP* --port= *Port*
     
-#### Test AI
+### Test AI
     ./quarto.py ai --verbose --algo= *algo* --depth= *depth* --tt
 
  1. algo : choisissez entre Negamax, SSS, solve. Default = Negamax
@@ -53,11 +53,11 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2ODU4MDg4OCwtMjA2NzYxOTI4NiwyMD
-I2NDc5MzkxLDg3MjUzNDczMywtNjU1MjcyODE1LC0xNDkxMzQ0
-MzUwLC0yMDM3NTM4MzE1LDg5MTM4ODcwMSwtMjA0MDI2MjYxNC
-wtMjAyMzgyNzQxNCw4NjQ2Njk0MDgsMTAzNzY0OTkyNiwxMDM3
-NjQ5OTI2LC0yOTc3OTYyOSwtMTczMzg0MjA2NiwtMTUzNTIwMT
-M5MiwtMjEyODE2OTg2MCwtMzIzMDI0MzA2LC0xNjQ5OTU5MTY3
-LC00ODM0Nzk5MzldfQ==
+eyJoaXN0b3J5IjpbLTE0NTYzOTMyMzEsMTE2ODU4MDg4OCwtMj
+A2NzYxOTI4NiwyMDI2NDc5MzkxLDg3MjUzNDczMywtNjU1Mjcy
+ODE1LC0xNDkxMzQ0MzUwLC0yMDM3NTM4MzE1LDg5MTM4ODcwMS
+wtMjA0MDI2MjYxNCwtMjAyMzgyNzQxNCw4NjQ2Njk0MDgsMTAz
+NzY0OTkyNiwxMDM3NjQ5OTI2LC0yOTc3OTYyOSwtMTczMzg0Mj
+A2NiwtMTUzNTIwMTM5MiwtMjEyODE2OTg2MCwtMzIzMDI0MzA2
+LC0xNjQ5OTU5MTY3XX0=
 -->
