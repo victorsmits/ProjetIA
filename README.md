@@ -1,3 +1,4 @@
+
 # Projet AI Quarto
 
 Pour notre travaille de fin de 2 eme Bac en ingénieur industriel a l'Ecam orientation Génie Electrique, notre professeur d'informatique nous a mis au défis de creer une intelligence artificiel jouant au jeux Quarto.
@@ -36,7 +37,7 @@ Server:
     ./quarto.py *méthode* *nom* --verbose
 
 Vous avez aussi la possibilité de lancer les clients et server sur différente machine, il vous faudra donc préciser l'ip du host ainsi que le port de communication:
-
+    
 Server disant:
 
     ./quarto.py server --verbose --host=*ip-local* --port=*port*
@@ -44,3 +45,6 @@ Server disant:
  Client distant:
 
     ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTUxMzc0Nzc0OF19
+-->
