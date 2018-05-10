@@ -196,13 +196,13 @@ class QuartoClient(game.GameClient):
         pass
 
     def _nextmove(self, state):
-        # solve the game and give the move to do it, id_solve give me:
-        #   • move: Best move to play for the player.
-        #   • result: Either 1 (certain victory of the first player) or -1 (certain defeat) or 0 (either draw)
-        #   • depth: The minimal number of moves before victory (or defeat)
+        # solve the game and give the Move to do it, id_solve return:
+        #   • Move: Best Move to play for the player.
+        #   • Result: Either 1 (certain victory of the first player) or -1 (certain defeat) or 0 (either draw)
+        #   • Depth: The minimal number of moves before victory (or defeat)
 
-        result, depth, move = id_solve(AIClient([], state), ai_depths=range(2, 4), win_score=90)
-        return json.dumps(move)  # send the move
+        Result, Depth, Move = id_solve(AIClient([], state), ai_depths=range(2, 4), win_score=90)
+        return json.dumps(Move)  # send the Move
 
 
 # game client 2 => use to test the AI
@@ -217,10 +217,11 @@ class QuartoClient2(game.GameClient):
         pass
 
     def _nextmove(self, State):
-        AI = Negamax(3)
+        AIClient.ttentry = lambda self: State       # send State to the Transposition tables
+        AI = Negamax(6, tt=TT(), win_score=90)        # Algorithm(depth, scoring=None, win_score=inf,tt=None)
         Quarto = AIClient([AI_Player(AI), AI_Player(AI)], State)
-        move = Quarto.get_move()
-        return json.dumps(move)  # send the move
+        Move = Quarto.get_move()        # find the best move possible
+        return json.dumps(Move)  # send the Move
 
 
 # easy IA
@@ -460,13 +461,10 @@ if __name__ == '__main__':
 
     if args.component == 'ai':
         state = QuartoState()
-        scoring = lambda game: 100 if game.win() == state._state['currentPlayer'] else 0
-        AI_algo = Negamax(4, scoring, tt=TT())
-        quarto = AIClient([AI_Player(AI_algo), AI_Player(AI_algo)], state)
-        r, d, m = id_solve(quarto, ai_depths=range(1, 4), win_score=90)
-        print('r=', r)
-        print('d=', d)
-        print('m=', m)
+        result, depth, move = id_solve(AIClient([], state), ai_depths=range(2, 4), win_score=90)
+        print('result =', result)
+        print('depth =', depth)
+        print('move =', move)
         # quarto.play()
 
     if args.component == 'user':
