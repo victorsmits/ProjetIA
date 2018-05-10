@@ -1,7 +1,7 @@
 
 # Projet AI Quarto
 
-Pour notre travaille de fin de 2ème Bac en ingénieur industriel a l'Ecam orientation Génie Electrique, notre professeur d'informatique nous a mis au défis de creer une intelligence artificiel jouant au jeux Quarto.
+Pour notre travaille de fin de 2ème Bac en ingénieur industriel a l'Ecam orientation Génie Electrique, notre professeur d'informatique nous a mis au défis de créer une intelligence artificiel jouant au jeux Quarto.
 Pour ce faire il nous a mis a disposition une librairie ainsi qu'un code pour la structure du jeux.
 
 ## Technique utilisé
@@ -47,6 +47,6 @@ Server disant:
 
     ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ4MzQ3OTkzOSwxNjAwMDI3MTI1LDE1MT
-M3NDc3NDgsMTUxMzc0Nzc0OF19
+eyJoaXN0b3J5IjpbLTE2NDk5NTkxNjcsLTQ4MzQ3OTkzOSwxNj
+AwMDI3MTI1LDE1MTM3NDc3NDgsMTUxMzc0Nzc0OF19
 -->
