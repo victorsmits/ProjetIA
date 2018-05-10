@@ -41,11 +41,16 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 
 ##### Client distant :
     ./quarto.py *Intelligence* *Nom* --verbose --host= *IP* --port= *Port*
+Il est aussi possible de tester la programmation de l' AI via la commande :
+
+    ./quarto.py ai --verbose
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0OTEzNDQzNTAsLTIwMzc1MzgzMTUsOD
-kxMzg4NzAxLC0yMDQwMjYyNjE0LC0yMDIzODI3NDE0LDg2NDY2
-OTQwOCwxMDM3NjQ5OTI2LDEwMzc2NDk5MjYsLTI5Nzc5NjI5LC
-0xNzMzODQyMDY2LC0xNTM1MjAxMzkyLC0yMTI4MTY5ODYwLC0z
-MjMwMjQzMDYsLTE2NDk5NTkxNjcsLTQ4MzQ3OTkzOSwxNjAwMD
-I3MTI1LDE1MTM3NDc3NDgsMTUxMzc0Nzc0OF19
+eyJoaXN0b3J5IjpbLTYxODM2NDI4OSwtMTQ5MTM0NDM1MCwtMj
+AzNzUzODMxNSw4OTEzODg3MDEsLTIwNDAyNjI2MTQsLTIwMjM4
+Mjc0MTQsODY0NjY5NDA4LDEwMzc2NDk5MjYsMTAzNzY0OTkyNi
+wtMjk3Nzk2MjksLTE3MzM4NDIwNjYsLTE1MzUyMDEzOTIsLTIx
+MjgxNjk4NjAsLTMyMzAyNDMwNiwtMTY0OTk1OTE2NywtNDgzND
+c5OTM5LDE2MDAwMjcxMjUsMTUxMzc0Nzc0OCwxNTEzNzQ3NzQ4
+XX0=
 -->
