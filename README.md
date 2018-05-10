@@ -31,7 +31,7 @@ Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregi
     ./quarto.py server --verbose
 
 ##### Client :
-    ./quarto.py *méthode* *nom* --verbose
+    ./quarto.py *Intelligence* *nom* --verbose
 
 Vous avez aussi la possibilité de lancer les clients et server sur différente machine, il vous faudra donc préciser l'ip du host ainsi que le port de communication (*Pars défaut le host = localhost et le port = 5000*) :
     
@@ -39,11 +39,11 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
     ./quarto.py server --verbose --host=*ip-local* --port=*port*
 
 ##### Client distant :
-    ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
+    ./quarto.py *Intelligence* *nom* --verbose --host=*ip-local* --port=*port*
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODY0NjY5NDA4LDEwMzc2NDk5MjYsMTAzNz
-Y0OTkyNiwtMjk3Nzk2MjksLTE3MzM4NDIwNjYsLTE1MzUyMDEz
-OTIsLTIxMjgxNjk4NjAsLTMyMzAyNDMwNiwtMTY0OTk1OTE2Ny
-wtNDgzNDc5OTM5LDE2MDAwMjcxMjUsMTUxMzc0Nzc0OCwxNTEz
-NzQ3NzQ4XX0=
+eyJoaXN0b3J5IjpbLTIwMjM4Mjc0MTQsODY0NjY5NDA4LDEwMz
+c2NDk5MjYsMTAzNzY0OTkyNiwtMjk3Nzk2MjksLTE3MzM4NDIw
+NjYsLTE1MzUyMDEzOTIsLTIxMjgxNjk4NjAsLTMyMzAyNDMwNi
+wtMTY0OTk1OTE2NywtNDgzNDc5OTM5LDE2MDAwMjcxMjUsMTUx
+Mzc0Nzc0OCwxNTEzNzQ3NzQ4XX0=
 -->
