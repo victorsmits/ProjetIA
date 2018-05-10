@@ -15,9 +15,9 @@ Pour générer le coups qui sera jouer, j'utilise la fonction id_solve de la mé
 ### Utilisation
 
 Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregistrer le jeux.
- 1. [ Fenêtre 1] : server du jeux
- 2. [ Fenêtre 2] : client 1 du jeux
- 3. [ Fenêtre 3] : client 2 du jeux
+ 1. [Fenêtre 1] : server du jeux
+ 2. [Fenêtre 2] : client 1 du jeux
+ 3. [Fenêtre 3] : client 2 du jeux
 
 *vous pouvez lancer 2 fois le même client*
 
@@ -43,7 +43,7 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 ##### Client distant:
     ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMyMzAyNDMwNiwtMTY0OTk1OTE2NywtND
-gzNDc5OTM5LDE2MDAwMjcxMjUsMTUxMzc0Nzc0OCwxNTEzNzQ3
-NzQ4XX0=
+eyJoaXN0b3J5IjpbLTIxMjgxNjk4NjAsLTMyMzAyNDMwNiwtMT
+Y0OTk1OTE2NywtNDgzNDc5OTM5LDE2MDAwMjcxMjUsMTUxMzc0
+Nzc0OCwxNTEzNzQ3NzQ4XX0=
 -->
