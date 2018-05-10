@@ -45,9 +45,8 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 ./quarto.py server --verbose --host= <IP> --port= <Port>
 ```
 ##### Client distant :
-```html
-./quarto.py <Intelligence> <Nom> --verbose --host= <IP> --port= <Port>
-```    
+	./quarto.py `<Intelligence> <Nom>` --verbose --host= <IP> --port= <Port>
+  
 #### Test AI
 ```html
 ./quarto.py ai --verbose --algo= <algo> --depth= <depth> --tt
@@ -61,11 +60,11 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODIxMjYyNzcsLTE4ODIxMjYyNzcsLT
-EyOTI4OTQwODMsMTE5MzI5MzA0MSwxODg2ODAzOTQ5LC00NTE5
-MjUwMTEsLTE0NjA0NzI0MjEsLTE0NjA0NzI0MjEsOTIyNjQ3Nj
-csLTE0NTYzOTMyMzEsMTE2ODU4MDg4OCwtMjA2NzYxOTI4Niwy
-MDI2NDc5MzkxLDg3MjUzNDczMywtNjU1MjcyODE1LC0xNDkxMz
-Q0MzUwLC0yMDM3NTM4MzE1LDg5MTM4ODcwMSwtMjA0MDI2MjYx
-NCwtMjAyMzgyNzQxNF19
+eyJoaXN0b3J5IjpbNTY1NDM4ODkyLC0xODgyMTI2Mjc3LC0xOD
+gyMTI2Mjc3LC0xMjkyODk0MDgzLDExOTMyOTMwNDEsMTg4Njgw
+Mzk0OSwtNDUxOTI1MDExLC0xNDYwNDcyNDIxLC0xNDYwNDcyND
+IxLDkyMjY0NzY3LC0xNDU2MzkzMjMxLDExNjg1ODA4ODgsLTIw
+Njc2MTkyODYsMjAyNjQ3OTM5MSw4NzI1MzQ3MzMsLTY1NTI3Mj
+gxNSwtMTQ5MTM0NDM1MCwtMjAzNzUzODMxNSw4OTEzODg3MDEs
+LTIwNDAyNjI2MTRdfQ==
 -->
