@@ -8,8 +8,8 @@ Pour ce faire il nous a mis a disposition une librairie ainsi qu'un code pour la
 
 Pour créer mon intelligence artificiel j'ai décidée d'utiliser la librairie EasyAI [http://zulko.github.io/easyAI/index.html](http://zulko.github.io/easyAI/index.html) grace a cette librairie j'ai pu utiliser différent algorithme du type Alpha-Beta pruning, dans mon cas j'utilise plus précisément l'algorithme Negamax [https://en.wikipedia.org/wiki/Negamax](https://en.wikipedia.org/wiki/Negamax) ainsi que la méthode Solving qui va résoudre la partie en utilisant Negamax avec différente profondeur de recherche.
 
-Pour générer le coups qui sera jouer différente intelligence sont disponible ( voir ## Heading
-
+Pour générer le coups qui sera jouer différente intelligence sont disponible ( voir **Intelligence** ). 
+L'intelli
 , j'utilise la fonction id_solve de la méthode Solving qui va me retourner plusieurs information dont la movement le plus interessant pour arriver a la victoire le plus rapidement.
 
 ### Utilisation
@@ -42,8 +42,8 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 ##### Client distant :
     ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDk2NjUwNDk5LC0xNzMzODQyMDY2LC0xNT
-M1MjAxMzkyLC0yMTI4MTY5ODYwLC0zMjMwMjQzMDYsLTE2NDk5
-NTkxNjcsLTQ4MzQ3OTkzOSwxNjAwMDI3MTI1LDE1MTM3NDc3ND
-gsMTUxMzc0Nzc0OF19
+eyJoaXN0b3J5IjpbODk5NDI4NjksLTE3MzM4NDIwNjYsLTE1Mz
+UyMDEzOTIsLTIxMjgxNjk4NjAsLTMyMzAyNDMwNiwtMTY0OTk1
+OTE2NywtNDgzNDc5OTM5LDE2MDAwMjcxMjUsMTUxMzc0Nzc0OC
+wxNTEzNzQ3NzQ4XX0=
 -->
