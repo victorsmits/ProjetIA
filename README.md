@@ -1,6 +1,6 @@
 
 # Projet AI Quarto
-### utilisation
+
 Pour notre travaille de fin de 2ème Bac en ingénieur industriel a l'Ecam orientation Génie Electrique, notre professeur d'informatique nous a mis au défis de créer une intelligence artificiel jouant au jeux Quarto.
 Pour ce faire il nous a mis a disposition une librairie ainsi qu'un code pour la structure du jeux.
 
@@ -41,8 +41,9 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 ##### Client distant :
     ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAxOTc3NzUwLDEwMzc2NDk5MjYsLTI5Nz
-c5NjI5LC0xNzMzODQyMDY2LC0xNTM1MjAxMzkyLC0yMTI4MTY5
-ODYwLC0zMjMwMjQzMDYsLTE2NDk5NTkxNjcsLTQ4MzQ3OTkzOS
-wxNjAwMDI3MTI1LDE1MTM3NDc3NDgsMTUxMzc0Nzc0OF19
+eyJoaXN0b3J5IjpbMTAzNzY0OTkyNiwxMDM3NjQ5OTI2LC0yOT
+c3OTYyOSwtMTczMzg0MjA2NiwtMTUzNTIwMTM5MiwtMjEyODE2
+OTg2MCwtMzIzMDI0MzA2LC0xNjQ5OTU5MTY3LC00ODM0Nzk5Mz
+ksMTYwMDAyNzEyNSwxNTEzNzQ3NzQ4LDE1MTM3NDc3NDhdfQ==
+
 -->
