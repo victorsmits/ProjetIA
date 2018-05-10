@@ -8,11 +8,11 @@ Pour ce faire il nous a mis a disposition une librairie ainsi qu'un code pour la
 
 Pour créer mon intelligence artificiel j'ai décidée d'utiliser la librairie EasyAI [http://zulko.github.io/easyAI/index.html](http://zulko.github.io/easyAI/index.html) grace a cette librairie j'ai pu utiliser différent algorithme du type Alpha-Beta pruning, dans mon cas j'utilise plus précisément l'algorithme Negamax [https://en.wikipedia.org/wiki/Negamax](https://en.wikipedia.org/wiki/Negamax) ainsi que la méthode Solving qui va résoudre la partie en utilisant Negamax avec différente profondeur de recherche.
 
-## Methode
+### Methode
 
 Pour générer le coups qui sera jouer, j'utilise la fonction id_solve de la méthode Solving qui va me retourner plusieurs information dont la movement le plus interessant pour arriver a la victoire le plus rapidement.
 
-## Utilisation
+### Utilisation
 
 Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregistrer le jeux.
  1. [ Fenêtre 1] : server du jeux
@@ -47,6 +47,7 @@ Server disant:
 
     ./quarto.py *méthode* *nom* --verbose --host=*ip-local* --port=*port*
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NDk5NTkxNjcsLTQ4MzQ3OTkzOSwxNj
-AwMDI3MTI1LDE1MTM3NDc3NDgsMTUxMzc0Nzc0OF19
+eyJoaXN0b3J5IjpbMTc4MzA1MjA1NywtMTY0OTk1OTE2NywtND
+gzNDc5OTM5LDE2MDAwMjcxMjUsMTUxMzc0Nzc0OCwxNTEzNzQ3
+NzQ4XX0=
 -->
