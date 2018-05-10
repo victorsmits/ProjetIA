@@ -39,7 +39,7 @@ Vous avez aussi la possibilité de lancer un server sur une autre machine, il vo
 
 Server disant:
 
-    ./quarto.py server --verbose --host=*ip local* --port=*port*
+    ./quarto.py server --verbose --host=*ip-local* --port=*port*
 
  Client distant:
 
