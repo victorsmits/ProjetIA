@@ -51,9 +51,9 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 ```    
 #### Test AI
 ```html
-./quarto.py ai --verbose --algo= <algo> --depth= <depth> --tt
+./quarto.py ai --verbose --algo= <algorithme> --depth= <depth> --tt
 ```
- 1. algo : choisissez entre Negamax, SSS, solve. Default = Negamax
+ 1. algorithme : choisissez entre Negamax, SSS, solve. Default = Negamax
  2. depth : profondeur de la recherche de l'AI . Default = 3
  3. tt : active la transposition table. Default = False
 
@@ -62,7 +62,7 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1ODY4ODkzMSw4MTMxOTQwODksLTE4OD
+eyJoaXN0b3J5IjpbLTUwNDczOTE2NSw4MTMxOTQwODksLTE4OD
 IxMjYyNzcsLTE4ODIxMjYyNzcsLTE4ODIxMjYyNzcsLTEyOTI4
 OTQwODMsMTE5MzI5MzA0MSwxODg2ODAzOTQ5LC00NTE5MjUwMT
 EsLTE0NjA0NzI0MjEsLTE0NjA0NzI0MjEsOTIyNjQ3NjcsLTE0
