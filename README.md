@@ -50,7 +50,7 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 ./quarto.py <Intelligence> <Nom> --verbose --host=<IP> --port=<Port>
 ```    
 #### Test AI
-Grace au Test AI vous pouvez tester différente combinaison
+Grace au Test AI vous pouvez tester différente combinaison avant de la programmer. il vous suffit d'utiliser cette commande.
 ```html
 ./quarto.py ai --verbose --algo=<algorithme> --depth=<depth> --tt
 ```
@@ -63,11 +63,11 @@ Grace au Test AI vous pouvez tester différente combinaison
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTE0NDI3NzQwLDUyMTIzMjU1NywzMTA5Nj
-EyMDksLTE4MzE5MzMxNDUsOTE2Mjg0NjQ3LC01MDQ3MzkxNjUs
-ODEzMTk0MDg5LC0xODgyMTI2Mjc3LC0xODgyMTI2Mjc3LC0xOD
-gyMTI2Mjc3LC0xMjkyODk0MDgzLDExOTMyOTMwNDEsMTg4Njgw
-Mzk0OSwtNDUxOTI1MDExLC0xNDYwNDcyNDIxLC0xNDYwNDcyND
-IxLDkyMjY0NzY3LC0xNDU2MzkzMjMxLDExNjg1ODA4ODgsLTIw
-Njc2MTkyODZdfQ==
+eyJoaXN0b3J5IjpbLTIyMzQwNDcxNiw1MjEyMzI1NTcsMzEwOT
+YxMjA5LC0xODMxOTMzMTQ1LDkxNjI4NDY0NywtNTA0NzM5MTY1
+LDgxMzE5NDA4OSwtMTg4MjEyNjI3NywtMTg4MjEyNjI3NywtMT
+g4MjEyNjI3NywtMTI5Mjg5NDA4MywxMTkzMjkzMDQxLDE4ODY4
+MDM5NDksLTQ1MTkyNTAxMSwtMTQ2MDQ3MjQyMSwtMTQ2MDQ3Mj
+QyMSw5MjI2NDc2NywtMTQ1NjM5MzIzMSwxMTY4NTgwODg4LC0y
+MDY3NjE5Mjg2XX0=
 -->
