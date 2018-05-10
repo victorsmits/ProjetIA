@@ -41,17 +41,18 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 
 ##### Client distant :
     ./quarto.py *Intelligence* *Nom* --verbose --host= *IP* --port= *Port*
-Il est aussi possible de tester la programmation de l' AI via la commande :
+    
+### Test AI
 
     ./quarto.py ai --verbose --algo= *algo* --depth= *depth* --tt
 
  1. algo : choisissez entre Negamax, SSS, solve. Default = Negamax
- 2. depth : profondeur de la recherche de l'AI
- 3. tt : active la transposition table
-*C'est 3 argument ne *
+ 2. depth : profondeur de la recherche de l'AI . Default = 3
+ 3. tt : active la transposition table. Default = False
+*C'est 3 arguments ne sont pas obligatoire*
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2OTgzNzAyMjcsLTY1NTI3MjgxNSwtMT
+eyJoaXN0b3J5IjpbLTEwMTgxNDM2NDEsLTY1NTI3MjgxNSwtMT
 Q5MTM0NDM1MCwtMjAzNzUzODMxNSw4OTEzODg3MDEsLTIwNDAy
 NjI2MTQsLTIwMjM4Mjc0MTQsODY0NjY5NDA4LDEwMzc2NDk5Mj
 YsMTAzNzY0OTkyNiwtMjk3Nzk2MjksLTE3MzM4NDIwNjYsLTE1
