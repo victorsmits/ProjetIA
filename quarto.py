@@ -12,7 +12,7 @@ import time
 
 from random import randint
 from easyAI import TwoPlayersGame, AI_Player
-from easyAI.AI import Negamax, TT
+from easyAI.AI import Negamax, TT, SSS
 from easyAI.AI.solving import id_solve
 from lib import game
 
@@ -426,6 +426,9 @@ if __name__ == '__main__':
 
     # Create the parser for the '2 AI games' subcommand
     AI_parser = subparsers.add_parser('ai', help='launch a ai client')
+    AI_parser.add_argument('--algo', help='choose beetween : Negamax, SSS, solve', default='Negamax')
+    AI_parser.add_argument('--depth', help='choose ai depth', default=3)
+    AI_parser.add_argument('--tt', help='active transposition table', action='store_true')
     AI_parser.add_argument('--verbose', action='store_true')
 
     # Create the parser for the 'random AI' subcommand
@@ -461,11 +464,35 @@ if __name__ == '__main__':
 
     if args.component == 'ai':
         state = QuartoState()
-        result, depth, move = id_solve(AIClient([], state), ai_depths=range(2, 4), win_score=90)
-        print('result =', result)
-        print('depth =', depth)
-        print('move =', move)
-        # quarto.play()
+        
+        if args.algo == 'solve':
+            if args.tt:
+                AIClient.ttentry = lambda self: state  # Send State to the Transposition tables
+                result, depth, move = id_solve(AIClient([], state), ai_depths=range(2, int(args.depth)),
+                                               win_score=90, tt=TT())
+            else:
+                result, depth, move = id_solve(AIClient([], state), ai_depths=range(2, int(args.depth)), win_score=90)
+            print('result =', result)
+            print('depth =', depth)
+            print('move =', move)
+
+        if args.algo == 'Negamax':
+            if args.tt:
+                AI = Negamax(int(args.depth), tt=TT())
+                AIClient.ttentry = lambda self: state  # Send State to the Transposition tables
+            else:
+                AI = Negamax(int(args.depth))
+            quarto = AIClient([AI_Player(AI),AI_Player(AI)], state)
+            quarto.play()
+
+        if args.algo == 'SSS':
+            if args.tt:
+                AI = SSS(int(args.depth), tt=TT())
+                AIClient.ttentry = lambda self: state  # Send State to the Transposition tables
+            else:
+                AI = Negamax(int(args.depth))
+            quarto = AIClient([AI_Player(AI),AI_Player(AI)], state)
+            quarto.play()
 
     if args.component == 'user':
         QuartoUser(args.name, (args.host, args.port), verbose=args.verbose)
