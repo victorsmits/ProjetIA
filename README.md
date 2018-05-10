@@ -45,12 +45,15 @@ Il est aussi possible de tester la programmation de l' AI via la commande :
 
     ./quarto.py ai --verbose --algo= *algo* --depth= *depth* --tt
 
+ 1. --algo : choisissez entre Negamax, SSS, solve. Default = Negamax
+ 2. depth
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjY4Nzg2NjMsLTY1NTI3MjgxNSwtMT
-Q5MTM0NDM1MCwtMjAzNzUzODMxNSw4OTEzODg3MDEsLTIwNDAy
-NjI2MTQsLTIwMjM4Mjc0MTQsODY0NjY5NDA4LDEwMzc2NDk5Mj
-YsMTAzNzY0OTkyNiwtMjk3Nzk2MjksLTE3MzM4NDIwNjYsLTE1
-MzUyMDEzOTIsLTIxMjgxNjk4NjAsLTMyMzAyNDMwNiwtMTY0OT
-k1OTE2NywtNDgzNDc5OTM5LDE2MDAwMjcxMjUsMTUxMzc0Nzc0
-OCwxNTEzNzQ3NzQ4XX0=
+eyJoaXN0b3J5IjpbODA5NzI0Mjc4LC02NTUyNzI4MTUsLTE0OT
+EzNDQzNTAsLTIwMzc1MzgzMTUsODkxMzg4NzAxLC0yMDQwMjYy
+NjE0LC0yMDIzODI3NDE0LDg2NDY2OTQwOCwxMDM3NjQ5OTI2LD
+EwMzc2NDk5MjYsLTI5Nzc5NjI5LC0xNzMzODQyMDY2LC0xNTM1
+MjAxMzkyLC0yMTI4MTY5ODYwLC0zMjMwMjQzMDYsLTE2NDk5NT
+kxNjcsLTQ4MzQ3OTkzOSwxNjAwMDI3MTI1LDE1MTM3NDc3NDgs
+MTUxMzc0Nzc0OF19
 -->
