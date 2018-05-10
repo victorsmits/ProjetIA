@@ -12,7 +12,7 @@ Pour générer le coups qui sera jouer différente intelligence sont disponible 
 
 L'intelligence principale, l'intelligence *client*, utilise la fonction id_solve de la class Solving qui va me retourner plusieurs information dont la mouvement le plus interessant pour arriver a la victoire le plus rapidement.
 
-### Utilisation
+#### Utilisation
 
 Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregistrer le jeux.
  1. [Fenêtre 1] : server du jeux
@@ -20,14 +20,14 @@ Pour jouer au jeux vous devez lancer 3 terminale depuis le dossier ou est enregi
  3. [Fenêtre 3] : client 2 du jeux
 *vous pouvez lancer 2 fois le même client*
 
-### Intelligence
+#### Intelligence
  1. client : utilisation de id_solve *(recommander)*
  2. clientB : utilisation de Negamax avec transposition table
  3. user : pour jouer contre l'IA
  4. rdm : AI qui agis 100% aléatoirement
  5. prof : AI d'origine
 
-### Lancer une partie 
+#### Lancer une partie 
 ##### Server :
     ./quarto.py server --verbose
 
@@ -42,7 +42,7 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 ##### Client distant :
     ./quarto.py *Intelligence* *Nom* --verbose --host= *IP* --port= *Port*
     
-### Test AI
+#### Test AI
     ./quarto.py ai --verbose --algo= *algo* --depth= *depth* --tt
 
  1. algo : choisissez entre Negamax, SSS, solve. Default = Negamax
@@ -54,11 +54,11 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 Le test AI n'a pas besoin du serveur il peut être lancer dans une seul fenêtre de terminal.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTIyNjQ3NjcsLTE0NTYzOTMyMzEsMTE2OD
-U4MDg4OCwtMjA2NzYxOTI4NiwyMDI2NDc5MzkxLDg3MjUzNDcz
-MywtNjU1MjcyODE1LC0xNDkxMzQ0MzUwLC0yMDM3NTM4MzE1LD
-g5MTM4ODcwMSwtMjA0MDI2MjYxNCwtMjAyMzgyNzQxNCw4NjQ2
-Njk0MDgsMTAzNzY0OTkyNiwxMDM3NjQ5OTI2LC0yOTc3OTYyOS
-wtMTczMzg0MjA2NiwtMTUzNTIwMTM5MiwtMjEyODE2OTg2MCwt
-MzIzMDI0MzA2XX0=
+eyJoaXN0b3J5IjpbLTE0NjA0NzI0MjEsOTIyNjQ3NjcsLTE0NT
+YzOTMyMzEsMTE2ODU4MDg4OCwtMjA2NzYxOTI4NiwyMDI2NDc5
+MzkxLDg3MjUzNDczMywtNjU1MjcyODE1LC0xNDkxMzQ0MzUwLC
+0yMDM3NTM4MzE1LDg5MTM4ODcwMSwtMjA0MDI2MjYxNCwtMjAy
+MzgyNzQxNCw4NjQ2Njk0MDgsMTAzNzY0OTkyNiwxMDM3NjQ5OT
+I2LC0yOTc3OTYyOSwtMTczMzg0MjA2NiwtMTUzNTIwMTM5Miwt
+MjEyODE2OTg2MF19
 -->
