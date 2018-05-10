@@ -10,7 +10,7 @@ Pour créer mon intelligence artificiel j'ai décidée d'utiliser la librairie E
 
 Pour générer le coups qui sera jouer différente intelligence sont disponible ( voir **[Intelligence](https://github.com/victorsmits/ProjetIA/blob/master/README.md#intelligence)** ). 
 
-L'intelligence principale, Intelligence *client*, utilise la fonction id_solve de la class Solving qui va me retourner plusieurs information dont la movement le plus interessant pour arriver a la victoire le plus rapidement.
+L'intelligence principale, l'intelligence *client*, utilise la fonction id_solve de la class Solving qui va me retourner plusieurs information dont la movement le plus interessant pour arriver a la victoire le plus rapidement.
 
 ### Utilisation
 
@@ -42,10 +42,10 @@ Vous avez aussi la possibilité de lancer les clients et server sur différente 
 ##### Client distant :
     ./quarto.py *Intelligence* *Nom* --verbose --host=*IP-local* --port=*Port*
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNDc2NjY5NDIsLTIwNDAyNjI2MTQsLT
-IwMjM4Mjc0MTQsODY0NjY5NDA4LDEwMzc2NDk5MjYsMTAzNzY0
-OTkyNiwtMjk3Nzk2MjksLTE3MzM4NDIwNjYsLTE1MzUyMDEzOT
-IsLTIxMjgxNjk4NjAsLTMyMzAyNDMwNiwtMTY0OTk1OTE2Nywt
-NDgzNDc5OTM5LDE2MDAwMjcxMjUsMTUxMzc0Nzc0OCwxNTEzNz
-Q3NzQ4XX0=
+eyJoaXN0b3J5IjpbODkxMzg4NzAxLC0yMDQwMjYyNjE0LC0yMD
+IzODI3NDE0LDg2NDY2OTQwOCwxMDM3NjQ5OTI2LDEwMzc2NDk5
+MjYsLTI5Nzc5NjI5LC0xNzMzODQyMDY2LC0xNTM1MjAxMzkyLC
+0yMTI4MTY5ODYwLC0zMjMwMjQzMDYsLTE2NDk5NTkxNjcsLTQ4
+MzQ3OTkzOSwxNjAwMDI3MTI1LDE1MTM3NDc3NDgsMTUxMzc0Nz
+c0OF19
 -->
