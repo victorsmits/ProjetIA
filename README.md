@@ -1,5 +1,5 @@
 
-<![endif]-->
+
 
 Charle Vandermies 15123
 
@@ -41,7 +41,7 @@ Pour jouer au jeu, vous devez lancer 3 terminaux depuis le dossier où est enreg
 
 3. user : Pour jouer contre l'IA
 
-4. rdm : IA agis 100% aléatoirement
+4. rdm : IA agit 100% aléatoirement
 
 5. prof : IA d'origine
 
@@ -101,11 +101,11 @@ Grâce au Test AI, vous pouvez tester différentes combinaisons avant de program
 
 Le test AI n'a pas besoin du serveur, il peut être lancé dans une seule fenêtre de terminal.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3NjA0Njk5NSwtMjIzNDA0NzE2LDUyMT
-IzMjU1NywzMTA5NjEyMDksLTE4MzE5MzMxNDUsOTE2Mjg0NjQ3
-LC01MDQ3MzkxNjUsODEzMTk0MDg5LC0xODgyMTI2Mjc3LC0xOD
-gyMTI2Mjc3LC0xODgyMTI2Mjc3LC0xMjkyODk0MDgzLDExOTMy
-OTMwNDEsMTg4NjgwMzk0OSwtNDUxOTI1MDExLC0xNDYwNDcyND
-IxLC0xNDYwNDcyNDIxLDkyMjY0NzY3LC0xNDU2MzkzMjMxLDEx
-Njg1ODA4ODhdfQ==
+eyJoaXN0b3J5IjpbNjg1ODYzNDk3LC04NzYwNDY5OTUsLTIyMz
+QwNDcxNiw1MjEyMzI1NTcsMzEwOTYxMjA5LC0xODMxOTMzMTQ1
+LDkxNjI4NDY0NywtNTA0NzM5MTY1LDgxMzE5NDA4OSwtMTg4Mj
+EyNjI3NywtMTg4MjEyNjI3NywtMTg4MjEyNjI3NywtMTI5Mjg5
+NDA4MywxMTkzMjkzMDQxLDE4ODY4MDM5NDksLTQ1MTkyNTAxMS
+wtMTQ2MDQ3MjQyMSwtMTQ2MDQ3MjQyMSw5MjI2NDc2NywtMTQ1
+NjM5MzIzMV19
 -->
