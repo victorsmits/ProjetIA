@@ -168,7 +168,7 @@ class QuartoState(game.GameState):
             print('total execution time: {}'.format(Time_Total))
 
 
-# code server
+# server code
 class QuartoServer(game.GameServer):
     '''Class representing a server for the Quarto game.'''
 
@@ -231,11 +231,11 @@ class AIClient(TwoPlayersGame):
         self.players = players
         self.nplayer = 1
 
-    def possible_moves(self):  # génere la liste de tout les coups possible en fonction du plateau
+    def possible_moves(self):  # generate the possible move list according to the board
         liste = []
         visible = self.State._state['visible']
 
-        if visible['board'].count(None) == 1:  # si il n'y a plus qu'une place sur le plateau joue la derniere piece
+        if visible['board'].count(None) == 1:  # play the last piece if there is only one disponibilty on the board
             liste.append({'pos': visible['board'].index(None), 'nextPiece': 0})
 
         else:
@@ -355,7 +355,7 @@ class QuartoRandom(game.GameClient):
         return json.dumps(move)
 
 
-# code client d'origine
+# original client code
 class ProfAI(game.GameClient):
     '''Class representing a client for the Quarto game.'''
 
